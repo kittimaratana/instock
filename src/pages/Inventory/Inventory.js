@@ -1,3 +1,5 @@
-import './Inventory.scss';
+import "./Inventory.scss";
 
-export const Inventory = () => {}
+export const Inventory = () => {
+  return <div>Inventory</div>;
+};
