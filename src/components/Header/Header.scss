@@ -1,0 +1,90 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/colors";
+
+.header {
+  background-color: $graphite;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 1rem;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $tablet-padding;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @include desktop {
+    padding-left: $desktop-padding;
+    padding-right: $desktop-padding;
+  }
+
+  &__logo {
+    display: flex;
+    padding-top: 1rem;
+    align-self: center;
+
+    @include tablet {
+      padding-top: 0;
+      justify-content: flex-start;
+    }
+  }
+
+  &__logo-image {
+    margin: 0;
+  }
+
+  &__nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    padding-top: 0.5rem;
+
+    @include tablet {
+      padding-top: 0;
+      justify-content: flex-start;
+    }
+  }
+
+  &__nav-item {
+    width: 40%;
+    text-align: center;
+    padding: 0.5rem;
+
+    @include tablet {
+      padding: .5rem 1.1rem;
+      margin: 0 .25rem;
+    }
+
+    @include desktop {
+      width: fit-content;
+      min-width: 4rem;
+      margin-right: 0.75rem;
+    }
+
+    &--active {
+      background-color: $black;
+      border-radius: 50px;
+
+      .header__nav-link {
+        color: $white;
+      }
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: $cloud;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
