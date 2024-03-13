@@ -54,37 +54,47 @@
   }
 
   &__nav-item {
-    width: 40%;
     text-align: center;
-    padding: 0.5rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 
     @include tablet {
-      padding: .5rem 1.1rem;
-      margin: 0 .25rem;
+      margin: 0 0.25rem;
     }
 
     @include desktop {
-      width: fit-content;
-      min-width: 4rem;
       margin-right: 0.75rem;
-    }
-
-    &--active {
-      background-color: $black;
-      border-radius: 50px;
-
-      .header__nav-link {
-        color: $white;
-      }
     }
   }
 
   &__nav-link {
+    width: 40%;
     text-decoration: none;
     color: $cloud;
+    flex: 1;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    @include tablet {
+      padding: 0.5rem 1.1rem;
+    }
+
+    @include desktop {
+      min-width: 4rem;
+    }
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  .active {
+    background-color: $black;
+    border-radius: 50px;
+
+    .header__nav-link {
+      color: $white;
     }
   }
 }
