@@ -1,26 +1,41 @@
 @import "../../styles/partials/mixins";
+@import "../../styles/partials/breakpoints";
 @import "../../styles/partials/variables";
 @import "../../styles/partials/colors";
 
 .header {
   background-color: $graphite;
-  display: flex;
-  flex-direction: column;
   font-size: 13px;
   line-height: 20px;
-  padding: 1rem;
 
   @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: $tablet-padding;
     font-size: 14px;
     line-height: 22px;
   }
 
-  @include desktop {
-    padding-left: $desktop-padding;
-    padding-right: $desktop-padding;
+  &__center-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: $tablet-padding;
+    }
+
+    @include desktop {
+      padding-left: $desktop-padding;
+      padding-right: $desktop-padding;
+    }
+
+    @include desktop {
+      max-width: $breakpoint-desktop;
+      margin: 0 auto;
+      padding: auto;
+
+      max-width: 80rem;
+    }
   }
 
   &__logo {

@@ -1,5 +1,14 @@
 @import "./styles/partials/typography";
 
-.app {
+*,
+*::before,
+*::after,
+a {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
 }
