@@ -1,5 +1,7 @@
 import "./WarehouseTable.scss";
 import WareHouseItem from "../WareHouseItem/WareHouseItem";
+import SearchInput from "../SearchInput/SearchInput";
+import AddButton from "../AddButton/AddButton";
 import sort from "../../assets/images/sort-24px.svg";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
@@ -43,32 +45,15 @@ function WarehouseTable() {
       <section className="warehouse__header">
         <h1 className="warehouse__header-name">Warehouses</h1>
         <div className="warehouse__search-add-container">
-          <form className="warehouse__search-container">
-            <input
-              type="text"
-              id="search-bar"
-              name="searchBar"
-              placeholder="Search..."
-              className="warehouse__search-field"
-            />
-          </form>
-          <button className="warehouse__add-warehouse">
-            + Add New Warehouse
-          </button>
+          <SearchInput/>
+          <AddButton message="+ Add New Warehouse"/>
         </div>
       </section>
       <section className="warehouse__label-container">
-        <h4 className="warehouse__label-warehouse">
-          WAREHOUSE <img className="warehouse__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="warehouse__label-address">
-          ADDRESS <img className="warehouse__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="warehouse__label-name">
-          CONTACT NAME <img className="warehouse__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="warehouse__label-information">
-          CONTACT INFORMATION{" "}
+        <h4 className="warehouse__label-warehouse">WAREHOUSE <img className="warehouse__sort" src={sort} alt="sort" /></h4>
+        <h4 className="warehouse__label-address">ADDRESS <img className="warehouse__sort" src={sort} alt="sort" /></h4>
+        <h4 className="warehouse__label-name">CONTACT NAME <img className="warehouse__sort" src={sort} alt="sort" /></h4>
+        <h4 className="warehouse__label-information">CONTACT INFORMATION{" "}
           <img className="warehouse__sort" src={sort} alt="sort" />
         </h4>
         <h4 className="warehouse__label-action">ACTIONS</h4>

@@ -37,48 +37,6 @@
     }
   }
 
-  &__search-container {
-    @include body-medium;
-    padding-bottom: 1rem;
-  }
-
-  &__search-field {
-    width: 18.4375rem;
-    height: 2.25rem;
-    border: 0.0625rem solid $cloud;
-    border-radius: 1.25rem;
-    padding-left: 0.625rem;
-    background: transparent url("../../assets/images/search-24px.svg") no-repeat
-      right;
-    background-position-x: calc(100% - 0.625rem);
-
-    @include tablet {
-      width: 11.5625rem;
-    }
-
-    @include desktop {
-      width: 17.125rem;
-    }
-  }
-
-  &__add-warehouse {
-    @include body-medium;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 18.4375rem;
-    height: 2.25rem;
-    background-color: $blue;
-    border: none;
-    border-radius: 1.25rem;
-    color: $white;
-
-    @include tablet {
-      width: 10.5rem;
-    }
-  }
-
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
