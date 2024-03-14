@@ -10,12 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <main>
       <Routes>
         <Route path="/" element={<Warehouses />} />
         <Route path="warehouse/:warehouseId" element={<WarehouseDetails/>} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </main>
     </BrowserRouter>
   );
 }

@@ -1,6 +1,5 @@
 import "./WarehouseTable.scss";
 import WareHouseItem from "../WareHouseItem/WareHouseItem";
-import searchIcon from "../../assets/images/search-24px.svg";
 import sort from "../../assets/images/sort-24px.svg";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
