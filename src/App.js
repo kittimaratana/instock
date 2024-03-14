@@ -5,6 +5,7 @@ import { Inventory } from "./pages/Inventory/Inventory";
 import { Warehouses } from "./pages/Warehouses/Warehouses";
 import { WarehouseDetails } from "./pages/WarehouseDetails/WarehouseDetails";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   );
 }
