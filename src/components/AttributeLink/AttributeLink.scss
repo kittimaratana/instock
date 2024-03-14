@@ -1,0 +1,9 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
+.attribute-link__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }

@@ -1,0 +1,22 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
+.add-button {
+    @include body-medium;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18.4375rem;
+    height: 2.25rem;
+    background-color: $blue;
+    border: none;
+    border-radius: 1.25rem;
+    color: $white;
+
+    @include tablet {
+      width: 10.5rem;
+    }
+}

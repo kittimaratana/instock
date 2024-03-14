@@ -1,0 +1,125 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
+
+.warehouse {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: $mobile-padding;
+    padding-top: 1.5rem;
+    @include tablet {
+      padding: $tablet-padding;
+      flex-direction: row;
+    }
+  }
+
+  &__header-name {
+    @include page-header;
+    margin-right: 15rem;
+    padding-bottom: 1rem;
+    @include tablet {
+      margin-right: 5rem;
+    }
+  }
+
+  &__search-add-container {
+    gap: $mobile-padding;
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__divider1 {
+    width: 100%;
+    border: 0.0625rem solid $cloud;
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__divider2 {
+    border: 0.0625rem solid $cloud;
+    width: 100%;
+  }
+
+  &__label-container {
+    display: none;
+
+    @include tablet {
+      @include table-header;
+      display: flex;
+      color: $slate;
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+      width: 100%;
+      height: 2.5rem;
+      background-color: $lightgray;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @include desktop {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  &__sort {
+    height: 1rem;
+  }
+
+  &__label-warehouse {
+    width: 22%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__label-address {
+    width: 20%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 29%;
+    }
+  }
+
+  &__label-name {
+    width: 18%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 18%;
+    }
+  }
+
+  &__label-information {
+    width: 29.5%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 24%;
+    }
+  }
+
+  &__label-action {
+    width: 10.5%;
+    display: flex;
+    justify-content: flex-end;
+
+    @include desktop {
+      width: 7%;
+      justify-content: space-between;
+    }
+  }
+}
