@@ -1,0 +1,109 @@
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/_breakpoints" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_colors" as *;
+
+$card-mobile-padding: 1.5rem;
+
+.inventoryDetailsTable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: $card-mobile-padding;
+    padding-top: 2rem;
+    align-items: center;
+
+    @include tablet {
+      padding: $tablet-padding;
+      padding-top: 2rem;
+      padding-bottom: $card-mobile-padding;
+      flex-direction: row;
+    }
+
+    &-container {
+      width: 70%;
+      display: flex;
+    }
+    &-title {
+      @include page-header;
+      padding-left: 0.5rem;
+      @include tablet {
+        margin-right: 5rem;
+      }
+    }
+
+    &-divider1 {
+      width: 100%;
+      border: 0.0625rem solid $cloud;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: $card-mobile-padding;
+
+    @include tablet {
+      flex-direction: row;
+      padding: $tablet-space-between $tablet-padding;
+    }
+
+    > :last-child {
+      padding-top: $mobile-padding;
+
+      @include tablet {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__section {
+    flex: 1;
+
+    &-row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    > :not(:first-child) {
+      padding-top: $mobile-padding;
+
+      @include tablet {
+          padding-top: $tablet-padding;
+      }
+    }
+  }
+
+  &__item {
+    flex: 1;
+  }
+
+  &__label {
+    @include body-small;
+    color: $slate;
+    text-transform: uppercase
+  }
+
+  &__value {
+    @include body-medium;
+    position: relative;
+    color: $black;
+  }
+
+  &__section-devider {
+    display: none;
+    margin: 0 $mobile-padding;
+    border: 0.0625rem solid $cloud;
+
+    @include tablet {
+      display: inline;
+      margin: 0 $tablet-padding;
+    }
+  }
+}
