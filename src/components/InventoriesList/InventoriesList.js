@@ -5,32 +5,28 @@ import AttributeLink from "../AttributeLink/AttributeLink";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
 
-export function InventoriesList({ inventories }) {
+export function InventoriesList({ inventories, withWarehouseName }) {
   return (
     <section className="inventories-list__container">
       {inventories.map((inventory) => (
-        <InventoriesListItem key={inventory.id} {...inventory} />
+        <InventoriesListItem
+          key={inventory.id}
+          {...inventory}
+          withWarehouseName={withWarehouseName}
+        />
       ))}
     </section>
   );
 }
 
 export function InventoriesListItem({
-  address,
   category,
-  city,
-  contact_email,
-  contact_name,
-  contact_phone,
-  contact_position,
-  country,
-  descripyion,
   id,
   item_name,
   quantity,
   status,
-  warehouse_id,
   warehouse_name,
+  withWarehouseName
 }) {
   return (
     <>
@@ -60,6 +56,12 @@ export function InventoriesListItem({
               <h4 className="inventories-list__label">QTY</h4>
               <p className="inventories-list__value">{quantity}</p>
             </div>
+            {withWarehouseName && (
+              <div className="inventories-list__sub-item">
+                <h4 className="inventories-list__label">WAREHOUSE</h4>
+                <p className="inventories-list__value">{warehouse_name}</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="inventories-list__wrap-section3">

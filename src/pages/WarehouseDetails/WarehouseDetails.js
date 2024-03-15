@@ -95,7 +95,7 @@ export const WarehouseDetails = () => {
       </section>
       <hr className="warehouse-details__divider1" />
 
-      <InventoriesList inventories={inventories} />
+      <InventoriesList inventories={inventories} withWarehouseName={false} />
     </div>
   );
 };
