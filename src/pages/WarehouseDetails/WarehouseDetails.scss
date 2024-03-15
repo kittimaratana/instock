@@ -102,6 +102,7 @@
   &__label {
     @include table-header;
     color: $slate;
+    padding-bottom: 0.2rem
   }
   &__value {
     @include body-medium;

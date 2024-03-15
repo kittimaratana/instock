@@ -1,4 +1,5 @@
 import arrowBack from "../../assets/images/arrow_back-24px.svg"
+import "./ArrowBack.scss"
 
 function ArrowBack() {
     return (

@@ -1,4 +1,5 @@
 import "./WarehouseDetails.scss";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -49,7 +50,9 @@ export const WarehouseDetails = () => {
     <div className="warehouse-details__center-wrap">
       <section className="warehouse-details__header">
         <div className="warehouse-details__header-container">
-          <ArrowBack />
+          <Link to={"/"}>
+            <ArrowBack />
+          </Link>
           <div className="warehouse-details__header-name">
             {warehouse.warehouse_name}
           </div>
@@ -75,7 +78,7 @@ export const WarehouseDetails = () => {
             </div>
           </div>
           <div className="warehouse-details__sub-item">
-            <h4 className="warehouse-details__label">CONTACT INFORMATION</h4>
+            <h4 className="warehouse-details__label">CONTACT INFORMATION:</h4>
             <div className="warehouse-details__value">
               {warehouse.contact_phone}
             </div>
@@ -87,7 +90,7 @@ export const WarehouseDetails = () => {
       </section>
       <hr className="warehouse-details__divider1" />
 
-      <InventoriesList inventories={inventories}/>
+      <InventoriesList inventories={inventories} />
     </div>
   );
 };
