@@ -6,6 +6,7 @@ import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
+import sort from "../../assets/images/sort-24px.svg";
 
 export const WarehouseDetails = () => {
   const [warehouse, setWarehouse] = useState({});
@@ -93,7 +94,25 @@ export const WarehouseDetails = () => {
           </div>
         </div>
       </section>
-      <hr className="warehouse-details__divider1" />
+      <hr className="warehouse-details__divider2" />
+
+      <section className="warehouse-details__label-container">
+        <h4 className="warehouse-details__label-warehouse">
+          INVENTORY ITEM <img className="warehouse-details__sort" src={sort} alt="sort" />
+        </h4>
+        <h4 className="warehouse-details__label-address">
+          CATEGORY <img className="warehouse-details__sort" src={sort} alt="sort" />
+        </h4>
+        <h4 className="warehouse-details__label-name">
+          STATUS <img className="warehouse-details__sort" src={sort} alt="sort" />
+        </h4>
+        <h4 className="warehouse-details__label-information">
+          QUANTITY{" "}
+          <img className="warehouse-details__sort" src={sort} alt="sort" />
+        </h4>
+        <h4 className="warehouse-details__label-action">ACTIONS</h4>
+      </section>
+   
 
       <InventoriesList inventories={inventories} />
     </div>

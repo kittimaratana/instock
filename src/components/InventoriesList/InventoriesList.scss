@@ -10,6 +10,62 @@
   flex-direction: column;
   width: 100%;
 
+  &--mobile {
+    padding: $mobile-padding;
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &--tablet {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      padding: 0 1rem;
+      margin: 0;
+      @include body-medium;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @include desktop {
+        padding: 0 3rem;
+    }
+  }
+
+  &__wrap-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__icon-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sub-item {
+    width: 100%;
+    padding-bottom: $mobile-padding;
+  }
+
+  &__label {
+    @include table-header;
+    color: $slate;
+  }
+  &__value {
+    @include body-medium;
+    position: relative;
+
+    &--align-text {
+      display: flex;
+      text-align: center;
+      color: $blue;
+      font-weight: 600;
+    }
+  }
+
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
@@ -47,7 +103,6 @@
   &__col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
   }
 
@@ -68,5 +123,60 @@
     justify-content: space-between;
     width: 100%;
     padding-right: 0.2rem;
+  }
+
+
+  &__item {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    color: $blue;
+    @include labels-links-button;
+  }
+
+  &__category {
+    width: 18%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+        width: 29%;
+    }
+  }
+
+  &__status {
+    width: 29%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+        width: 18%;
+    }
+  }
+
+  &__quantity {
+    width: 12.5%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+        width: 24%;
+    }
+  }
+
+  &__action {
+    width: 11.5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include tablet {
+      justify-content: space-between;
+    }
+
+    @include desktop {
+        width: 7%;
+        justify-content: space-between;
+    }
   }
 }
