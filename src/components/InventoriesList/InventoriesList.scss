@@ -10,6 +10,62 @@
   flex-direction: column;
   width: 100%;
 
+  &--mobile {
+    // padding: $mobile-padding;
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &--tablet {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      padding: 0 1rem;
+      margin: 0;
+      @include body-medium;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    // @include desktop {
+    //     padding: 0 3rem;
+    // }
+  }
+
+  &__wrap-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__icon-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sub-item {
+    width: 100%;
+    padding-bottom: $mobile-padding;
+  }
+
+  &__label {
+    @include table-header;
+    color: $slate;
+  }
+  &__value {
+    @include body-medium;
+    position: relative;
+
+    &--align-text {
+      display: flex;
+      text-align: center;
+      color: $blue;
+      font-weight: 600;
+    }
+  }
+
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
@@ -47,7 +103,6 @@
   &__col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
   }
 
@@ -59,7 +114,7 @@
 
   &__label {
     @include table-header;
-    color: $slate; 
+    color: $slate;
     padding-bottom: 0.2rem;
   }
 
@@ -68,5 +123,65 @@
     justify-content: space-between;
     width: 100%;
     padding-right: 0.2rem;
+  }
+
+  &__item {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    color: $blue;
+    @include labels-links-button;
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  &__category {
+    width: 18%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 17%;
+    }
+  }
+
+  &__status {
+    width: 29%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 27%;
+    }
+  }
+
+  &__quantity {
+    width: 12.5%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 23%;
+    }
+  }
+
+  &__action{
+    width: 11.5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include desktop {
+      width: 4%;
+      justify-content: space-between;
+    }
+
+    &-1{
+      padding-left: 2rem;
+      @include desktop {
+        padding-left: 0;
+      }
+    }
   }
 }
