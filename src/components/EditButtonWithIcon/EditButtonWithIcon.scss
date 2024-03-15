@@ -1,0 +1,14 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
+.edit-button {
+  width: 2rem;
+  height: 2rem;
+  background-color: $blue;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 0.3rem;
+  margin-top: 0.2rem;
+}

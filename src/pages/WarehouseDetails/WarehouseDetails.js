@@ -7,6 +7,7 @@ import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
+import EditButtonWithIcon from "../../components/EditButtonWithIcon/EditButtonWithIcon";
 
 export const WarehouseDetails = () => {
   const [warehouse, setWarehouse] = useState({});
@@ -59,6 +60,9 @@ export const WarehouseDetails = () => {
         </div>
         <div className="warehouse-details__header-edit">
           <CircleEdit />
+        </div>
+        <div className="warehouse-details__header-edit-tablet">
+         <EditButtonWithIcon />
         </div>
       </section>
       <hr className="warehouse-details__divider1" />

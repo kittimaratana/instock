@@ -42,6 +42,7 @@
     @include tablet {
       padding: $tablet-padding;
       flex-direction: row;
+      padding-bottom: 1.65rem;
     }
     &-container {
       width: 70%;
@@ -62,6 +63,9 @@
       text-align: center;
       margin-right: 0.3rem;
       margin-top: 0.2rem;
+      @include tablet {
+        display: none;
+      }
     }
   }
   
