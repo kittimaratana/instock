@@ -1,12 +1,36 @@
-@use "../../styles/partials/colors" as *;
-@use "../../styles/partials/_typography-mixins" as *;
-@use "../../styles/partials/_global" as *;
-@use "../../styles/partials/_mixins" as *;
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/colors";
+@import "../../styles/partials/typography-mixins";
 
 .circle-edit {
-width: 1.2rem;
-margin-top: 0.35rem;
-@include tablet {
-  margin-top: 0;
-}
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  background-color: $blue;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    width: auto;
+  }
+
+  &__icon {
+    width: 1.2rem;
+  }
+
+  &__text {
+    @include labels-links-button;
+    display: none;
+    color: $white;
+    margin-left: 0.25rem;
+
+    @include tablet {
+      display: inline;
+    }
+  }
 }

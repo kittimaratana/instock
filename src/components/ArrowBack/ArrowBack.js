@@ -1,10 +1,13 @@
-import arrowBack from "../../assets/images/arrow_back-24px.svg"
-import "./ArrowBack.scss"
+import arrowBack from "../../assets/images/arrow_back-24px.svg";
+import { NavLink } from "react-router-dom";
+import "./ArrowBack.scss";
 
-function ArrowBack() {
-    return (
-        <img className="arrow" src={arrowBack} alt="arrow-back" />
-    )
+function ArrowBack({ to }) {
+  return (
+    <NavLink to={to} className="arrow">
+      <img className="arrow__img" src={arrowBack} alt="arrow-back" />
+    </NavLink>
+  );
 }
 
 export default ArrowBack;
