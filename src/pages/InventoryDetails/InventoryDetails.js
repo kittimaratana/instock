@@ -1,9 +1,3 @@
-// The user must be able to view the details for a specific inventory item
-// when an item is clicked from the list view.
-// The user must have the ability to navigate to the edit item functionality from this view.
-// They should also be able to navigate back to the inventory list.
-// Create the UI and functionality for displaying the details of a specific inventory item.
-
 import "./InventoryDetails.scss";
 import InventoryDetailsTable from "../../components/InventoryDetailsTable/InventoryDetailsTable";
 import { useParams } from "react-router-dom";
@@ -16,12 +10,6 @@ export const InventoryDetails = () => {
   const inventoryId = params.inventoryId;
   const [inventoryInfo, setInventoryInfo] = useState({});
   const [hasError, setHasError] = useState(false);
-
-  // if (hasError) {
-  //   return (
-  //     <p>Unable to access warehouses right now. Please try again later.</p>
-  //   );
-  // }
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -39,6 +27,10 @@ export const InventoryDetails = () => {
     fetchInventory();
   }, [inventoryId]);
 
+  if (hasError) {
+    return <p>Unable to access Inventory right now. Please try again later.</p>;
+  }
+  
   return (
     <div className="inventoryDetails__center-wrap">
       <InventoryDetailsTable inventoryInfo={inventoryInfo} />
