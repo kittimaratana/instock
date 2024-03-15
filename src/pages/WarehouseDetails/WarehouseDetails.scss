@@ -39,13 +39,14 @@
     @include tablet {
       display: inline;
       margin: 0 $tablet-padding;
-      margin-left: 4rem;
+      margin-left: 5rem;
+      margin-right: 3rem;
     }
-    @include tablet {
-      margin-left: 7rem;
-    }
+    // @include tablet {
+    //   margin-left: 7rem;
+    // }
     @include desktop {
-      margin-left: 11rem;
+      margin-left: 10rem;
     }
   }
   &__header {
@@ -185,8 +186,8 @@
     }
 
     @include desktop {
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
@@ -194,39 +195,42 @@
     height: 1rem;
   }
 
-  &__label-warehouse {
+  &__label-item {
     width: 22%;
     display: flex;
     align-items: center;
+    @include desktop {
+      width: 20%;
+    }
   }
 
-  &__label-address {
+  &__label-category {
     width: 18%;
     display: flex;
     align-items: center;
 
     @include desktop {
-      width: 29%;
+      width: 17%;
     }
   }
 
-  &__label-name {
-    width: 29%;
+  &__label-status {
+    width: 28%;
     display: flex;
     align-items: center;
 
     @include desktop {
-      width: 18%;
+      width: 27%;
     }
   }
 
-  &__label-information {
-    width: 12.5%;
+  &__label-quantity {
+    width: 13.5%;
     display: flex;
     align-items: center;
 
     @include desktop {
-      width: 24%;
+      width: 23%;
     }
   }
 
@@ -236,7 +240,8 @@
     justify-content: flex-end;
 
     @include desktop {
-      width: 7%;
+      width: 6%;
+      padding-left: 0.5rem;
       justify-content: space-between;
     }
   }

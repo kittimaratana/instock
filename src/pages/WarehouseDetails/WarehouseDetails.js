@@ -97,16 +97,16 @@ export const WarehouseDetails = () => {
       <hr className="warehouse-details__divider2" />
 
       <section className="warehouse-details__label-container">
-        <h4 className="warehouse-details__label-warehouse">
+        <h4 className="warehouse-details__label-item">
           INVENTORY ITEM <img className="warehouse-details__sort" src={sort} alt="sort" />
         </h4>
-        <h4 className="warehouse-details__label-address">
+        <h4 className="warehouse-details__label-category">
           CATEGORY <img className="warehouse-details__sort" src={sort} alt="sort" />
         </h4>
-        <h4 className="warehouse-details__label-name">
+        <h4 className="warehouse-details__label-status">
           STATUS <img className="warehouse-details__sort" src={sort} alt="sort" />
         </h4>
-        <h4 className="warehouse-details__label-information">
+        <h4 className="warehouse-details__label-quantity">
           QUANTITY{" "}
           <img className="warehouse-details__sort" src={sort} alt="sort" />
         </h4>

@@ -70,18 +70,19 @@ export function InventoriesListItem({
             </div>
           </div>
           <div className="inventories-list--tablet">
-            <Link
-              to={`/inventory/${id}`}
-              className="inventories-list__item"
-            >
+            <Link to={`/inventory/${id}`} className="inventories-list__item">
               <AttributeLink attribute={item_name} device="tablet" />
             </Link>
             <p className="inventories-list__category">{category}</p>
-            <p className="inventories-list__status"><Status text={status} /></p>
+            <p className="inventories-list__status">
+              <Status text={status} />
+            </p>
             <p className="inventories-list__quantity">{quantity} </p>
             <div className="inventories-list__action">
               <DeleteButton />
-              <EditButton />
+              <div className="inventories-list__action inventories-list__action-1">
+                <EditButton />
+              </div>
             </div>
           </div>
         </section>
