@@ -1,6 +1,7 @@
 import "./InventoryDetailsTable.scss";
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
-import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
+import CircleEditButton from "../../components/CircleEditButton/CircleEditButton";
+import Status from "../../components/Status/Status";
 
 function InventoryDetailsTable({ inventoryInfo }) {
   return (
@@ -13,7 +14,7 @@ function InventoryDetailsTable({ inventoryInfo }) {
           </h1>
         </div>
         <div className="inventoryDetailsTable__header-edit">
-          <CircleEdit />
+          <CircleEditButton />
         </div>
       </div>
       <hr className="inventoryDetailsTable__header-divider1" />
@@ -42,7 +43,8 @@ function InventoryDetailsTable({ inventoryInfo }) {
             <div className="inventoryDetailsTable__item">
               <h4 className="inventoryDetailsTable__label">status:</h4>
               <p className="inventoryDetailsTable__value">
-                {inventoryInfo.status}
+                <Status text={inventoryInfo.status} />
+                
               </p>
             </div>
             <div className="inventoryDetailsTable__item">

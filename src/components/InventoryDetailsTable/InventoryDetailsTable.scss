@@ -32,6 +32,7 @@ $card-mobile-padding: 1.5rem;
     }
     &-title {
       @include page-header;
+      color:$black;
       padding-left: 0.5rem;
       @include tablet {
         margin-right: 5rem;
@@ -86,6 +87,7 @@ $card-mobile-padding: 1.5rem;
 
   &__label {
     @include body-small;
+    font-weight: 600;
     color: $slate;
     text-transform: uppercase
   }
