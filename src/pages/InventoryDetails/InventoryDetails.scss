@@ -18,10 +18,12 @@
     @include tablet {
       justify-content: space-between;
       top: -6.25rem;
+      margin-bottom: 30rem;
     }
 
     @include desktop {
       margin: 0 auto;
       max-width: 63.5rem;
+      // margin-bottom: 13rem;
     }
 }
