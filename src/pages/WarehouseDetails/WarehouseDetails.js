@@ -4,26 +4,46 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
-
-const baseUrl = "http://localhost:5001/api";
+import { BASE_URL } from "../../utils/constant-variables";
+import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
 
 export const WarehouseDetails = () => {
   const [warehouse, setWarehouse] = useState({});
+  const [inventories, setInventories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const { warehouseId } = useParams();
 
   useEffect(() => {
     const fetchWarehouseData = async () => {
       try {
         const getWarehouseByIdResponse = await axios.get(
-          `${baseUrl}/warehouses/${warehouseId}`
+          `${BASE_URL}/api/warehouses/${warehouseId}`
         );
+        const getInventoriesResponse = await axios.get(
+          `${BASE_URL}/api/warehouses/${warehouseId}/inventories`
+        );
+        setIsLoading(false);
         setWarehouse({ ...getWarehouseByIdResponse.data });
+        setInventories([...getInventoriesResponse.data]);
       } catch (error) {
+        setHasError(true);
+        setIsLoading(false);
         console.error(error);
       }
     };
     fetchWarehouseData();
   }, [warehouseId]);
+
+  if (hasError) {
+    return (
+      <p>Unable to access warehouses right now. Please try again later.</p>
+    );
+  }
+
+  if (isLoading) {
+    return <p>Is Loading...</p>;
+  }
 
   return (
     <div className="warehouse-details__center-wrap">
@@ -67,31 +87,7 @@ export const WarehouseDetails = () => {
       </section>
       <hr className="warehouse-details__divider1" />
 
-      <section className="warehouse-details__container">
-        <div className="warehouse-details__container-row">
-          <div className="warehouse-details__col">
-            <div className="warehouse-details__sub-item">
-              <h4 className="warehouse-details__label">INVENTORY ITEM</h4>
-              <p>TV</p>
-            </div>
-            <div className="warehouse-details__sub-item">
-              <h4 className="warehouse-details__label">CATEGORY</h4>
-              <p>Gear</p>
-            </div>
-          </div>
-          <div className="warehouse-details__col">
-            <div className="warehouse-details__sub-item">
-              <h4 className="warehouse-details__label">STATUS</h4>
-              <p className="instock">IN STOCK</p>
-              <p className="outofstock">OUT OF STOCK</p>
-            </div>
-            <div className="warehouse-details__sub-item">
-              <h4 className="warehouse-details__label">QTY</h4>
-              <p>0</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <InventoriesList inventories={inventories}/>
     </div>
   );
 };
