@@ -1,5 +1,4 @@
 import "./WarehouseDetails.scss";
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +6,6 @@ import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
-import EditButtonWithIcon from "../../components/EditButtonWithIcon/EditButtonWithIcon";
 
 export const WarehouseDetails = () => {
   const [warehouse, setWarehouse] = useState({});
@@ -51,9 +49,7 @@ export const WarehouseDetails = () => {
     <div className="warehouse-details__center-wrap">
       <section className="warehouse-details__header">
         <div className="warehouse-details__header-container">
-          <Link to={"/"}>
-            <ArrowBack />
-          </Link>
+          <ArrowBack to={"/"} />
           <div className="warehouse-details__header-name">
             {warehouse.warehouse_name}
           </div>
@@ -62,15 +58,20 @@ export const WarehouseDetails = () => {
           <CircleEdit />
         </div>
         <div className="warehouse-details__header-edit-tablet">
-         <EditButtonWithIcon />
+          <CircleEdit />
         </div>
       </section>
       <hr className="warehouse-details__divider1" />
       <section className="warehouse-details__container">
         <div className="warehouse-details__sub-item-address">
           <h4 className="warehouse-details__label">WAREHOUSE ADDRESS:</h4>
-          <div className="warehouse-details__value">{warehouse.address}</div>
+          <div className="warehouse-details__value">
+            {`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}
+          </div>
         </div>
+
+        <hr className="warehouse-details__section-divider" />
+
         <div className="warehouse-details__container-row">
           <div className="warehouse-details__sub-item">
             <h4 className="warehouse-details__label">CONTACT NAME:</h4>

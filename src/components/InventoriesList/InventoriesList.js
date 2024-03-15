@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { StatusTag } from "../StatusTag/StatusTag";
+// import { StatusTag } from "../StatusTag/StatusTag";
+import Status from "../Status/Status";
 import "./InventoriesList.scss";
 import AttributeLink from "../AttributeLink/AttributeLink";
 import DeleteButton from "../DeleteButton/DeleteButton";
@@ -54,7 +55,8 @@ export function InventoriesListItem({
           <div className="inventories-list__col">
             <div className="inventories-list__sub-item">
               <h4 className="inventories-list__label">STATUS</h4>
-              <StatusTag status={status} />
+              {/* <StatusTag status={status} /> */}
+              <Status text={status} />
             </div>
             <div className="inventories-list__sub-item">
               <h4 className="inventories-list__label">QTY</h4>
