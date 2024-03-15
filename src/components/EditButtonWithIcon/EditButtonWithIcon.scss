@@ -4,11 +4,22 @@
 @use "../../styles/partials/_mixins" as *;
 
 .edit-button {
-  width: 2rem;
-  height: 2rem;
-  background-color: $blue;
-  border-radius: 50%;
-  text-align: center;
-  margin-right: 0.3rem;
-  margin-top: 0.2rem;
+  @include tablet {
+    @include body-medium;
+    width: 4.9rem;
+    height: 2.35rem;
+    background-color: $blue;
+    border-radius: 1.2rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.circle-edit {
+  @include tablet {
+    width: 1.1rem;
+    margin-right: 0.3rem;
+  }
 }

@@ -1,4 +1,12 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
 .circle-edit {
 width: 1.2rem;
 margin-top: 0.35rem;
+@include tablet {
+  margin-top: 0;
+}
 }

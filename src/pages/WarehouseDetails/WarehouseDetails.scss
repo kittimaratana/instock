@@ -66,9 +66,15 @@
       @include tablet {
         display: none;
       }
+      &-tablet {
+        display: none;
+        @include tablet {
+          display: initial;
+        }
+      }
     }
   }
-  
+
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
@@ -107,7 +113,7 @@
   &__label {
     @include table-header;
     color: $slate;
-    padding-bottom: 0.2rem
+    padding-bottom: 0.2rem;
   }
   &__value {
     @include body-medium;

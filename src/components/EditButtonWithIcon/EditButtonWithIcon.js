@@ -3,7 +3,7 @@ import circleEdit from "../../assets/images/edit-white-24px.svg"
 
 function EditButtonWithIcon() {
   return (
-   <div><img className="circle-edit" src={circleEdit} alt="circle-edit" />EDIT</div> 
+   <div className="edit-button"><img className="circle-edit" src={circleEdit} alt="circle-edit" />Edit</div> 
   )
 }
 
