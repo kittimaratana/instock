@@ -8,7 +8,7 @@ function InventoryDetailsTable({ inventoryInfo }) {
     <section className="inventoryDetailsTable">
       <div className="inventoryDetailsTable__header">
         <div className="inventoryDetailsTable__header-container">
-          <ArrowBack />
+            <ArrowBack to="/inventory"/>
           <h1 className="inventoryDetailsTable__header-title">
             {inventoryInfo.item_name}
           </h1>
@@ -44,7 +44,6 @@ function InventoryDetailsTable({ inventoryInfo }) {
               <h4 className="inventoryDetailsTable__label">status:</h4>
               <p className="inventoryDetailsTable__value">
                 <Status text={inventoryInfo.status} />
-                
               </p>
             </div>
             <div className="inventoryDetailsTable__item">
