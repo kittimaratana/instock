@@ -39,7 +39,7 @@ function WareHouseItem({
             <div className="warehouse-item__sub-item">
               <h4 className="warehouse-item__label">CONTACT INFORMATION</h4>
               <p className="warehouse-item__value">{contactPhone} </p>
-              <br />
+          
               <p className="warehouse-item__value">{contactEmail}</p>
             </div>
           </div>

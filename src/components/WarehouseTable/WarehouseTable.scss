@@ -18,6 +18,7 @@
     @include tablet {
       padding: $tablet-padding;
       flex-direction: row;
+      padding-bottom: 0.7rem;
     }
   }
 
