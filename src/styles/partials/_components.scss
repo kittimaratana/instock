@@ -1,0 +1,39 @@
+//remove default settings
+@use "../partials/_colors" as *;
+@use "../partials/_mixins" as *;
+
+@mixin form-field {
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0 1rem 0 1rem;
+    border: 0.0625rem solid $cloud;
+    background-color: $white;
+    color: $slate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+        height: 2.375rem;
+    }
+}
+
+@mixin button {
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    padding: 0 1rem 0 1rem;
+    border: none;
+    background-color: $blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+        height: 2.375rem;
+    }
+}
