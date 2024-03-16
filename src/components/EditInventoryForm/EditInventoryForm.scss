@@ -5,7 +5,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_components" as *;
 
-.add-inventory {
+.edit-inventory {
   width: 100%;
 
   @include tablet {
@@ -17,15 +17,19 @@
     display: flex;
   }
 
-  &__header-name {
-    @include page-header;
+  &__header-container {
     width: 100%;
-    padding: 1.5rem;
-    padding-top: 2rem;
+    padding: 2rem 1rem 1rem 1.5rem;
+    display: flex;
 
     @include tablet {
-      padding: 2rem;
+      padding-bottom: 1.6rem;
     }
+  }
+
+  &__header-name {
+    padding-left: 0.5rem;
+    @include page-header;
   }
 
   &__divider {
@@ -42,8 +46,6 @@
   }
 
   &__details-container {
-    // display: flex;
-    // flex-direction: column;
     border-bottom: 1px;
     width: 100%;
 
@@ -162,25 +164,35 @@
     width: 48%;
 
     @include tablet {
-      width: 11%;
+      width: 12%;
     }
 
     @include desktop {
-      width: 8%;
+      width: 9%;
+    }
+
+    &:hover {
+      border-color: $blue;
+      color: $blue;
     }
   }
 
-  &__add-item {
+  &__edit-item {
     @include button;
     @include body-medium;
     width: 48%;
 
     @include tablet {
-      width: 15%;
+      width: 9%;
     }
 
     @include desktop {
-      width: 10%;
+      width: 7%;
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background-color: $graphite;
     }
   }
 }

@@ -10,7 +10,7 @@ function InventoryDetailsTable({ inventoryInfo }) {
     <section className="inventoryDetailsTable">
       <div className="inventoryDetailsTable__header">
         <div className="inventoryDetailsTable__header-container">
-          <ArrowBack to="/inventory" />
+          <ArrowBack />
           <h1 className="inventoryDetailsTable__header-title">
             {inventoryInfo.item_name}
           </h1>

@@ -130,24 +130,27 @@ const EditInventoryForm = () => {
   };
 
   return (
-    <section className="add-inventory">
-      <section className="add-inventory__header">
-        {/* TODO: tune styling*/}
-        <ArrowBack />
-        <h1 className="add-inventory__header-name">Edit Inventory Item</h1>
+    <section className="edit-inventory">
+      <section className="edit-inventory__header">
+        <div className="edit-inventory__header-container">
+          <ArrowBack />
+          <h1 className="edit-inventory__header-name">Edit Inventory Item</h1>
+        </div>
       </section>
 
-      <hr className="add-inventory__divider" />
+      <hr className="edit-inventory__divider" />
 
       <form onSubmit={handleSubmit}>
-        <div className="add-inventory__details-container">
-          <div className="add-inventory__details add-inventory__details--tablet">
-            <h2 className="add-inventory__details-header-name">Item Details</h2>
-            <label htmlFor="item-name" className="add-inventory__form-label">
+        <div className="edit-inventory__details-container">
+          <div className="edit-inventory__details edit-inventory__details--tablet">
+            <h2 className="edit-inventory__details-header-name">
+              Item Details
+            </h2>
+            <label htmlFor="item-name" className="edit-inventory__form-label">
               Item Name
             </label>
             <input
-              className="add-inventory__form-input"
+              className="edit-inventory__form-input"
               placeholder={itemName}
               id="item-name"
               type="text"
@@ -157,11 +160,11 @@ const EditInventoryForm = () => {
             />
             {itemName === "" && <EmptyField />}
 
-            <label htmlFor="description" className="add-inventory__form-label">
+            <label htmlFor="description" className="edit-inventory__form-label">
               Description
             </label>
             <textarea
-              className="add-inventory__form-input add-inventory__form-input--description"
+              className="edit-inventory__form-input edit-inventory__form-input--description"
               placeholder={description}
               id="description"
               type="text"
@@ -171,11 +174,11 @@ const EditInventoryForm = () => {
             />
             {description === "" && <EmptyField />}
 
-            <label htmlFor="category" className="add-inventory__form-label">
+            <label htmlFor="category" className="edit-inventory__form-label">
               Category
             </label>
             <select
-              className="add-inventory__form-input add-inventory__form-input--remove-default-dropdown"
+              className="edit-inventory__form-input edit-inventory__form-input--remove-default-dropdown"
               name="category"
               id="category"
               value={category}
@@ -191,17 +194,17 @@ const EditInventoryForm = () => {
             {category === "" && <EmptyField />}
           </div>
 
-          <hr className="add-inventory__divider add-inventory__divider--between-components" />
+          <hr className="edit-inventory__divider edit-inventory__divider--between-components" />
 
-          <div className="add-inventory__details">
-            <h2 className="add-inventory__details-header-name">
+          <div className="edit-inventory__details">
+            <h2 className="edit-inventory__details-header-name">
               Item Availability
             </h2>
-            <label className="add-inventory__form-label">Status</label>
-            <div className="add-inventory__form-radio-container">
-              <div className="add-inventory__form-radio-item">
+            <label className="edit-inventory__form-label">Status</label>
+            <div className="edit-inventory__form-radio-container">
+              <div className="edit-inventory__form-radio-item">
                 <input
-                  className="add-inventory__form-input add-inventory__form-input--status"
+                  className="edit-inventory__form-input edit-inventory__form-input--status"
                   id="in-stock"
                   type="radio"
                   name="status"
@@ -211,14 +214,14 @@ const EditInventoryForm = () => {
                 />
                 <label
                   htmlFor="in-stock"
-                  className="add-inventory__form-label add-inventory__form-label--status"
+                  className="edit-inventory__form-label edit-inventory__form-label--status"
                 >
                   In stock
                 </label>
               </div>
-              <div className="add-inventory__form-radio-item">
+              <div className="edit-inventory__form-radio-item">
                 <input
-                  className="add-inventory__form-input add-inventory__form-input--status"
+                  className="edit-inventory__form-input edit-inventory__form-input--status"
                   id="out-of-stock"
                   type="radio"
                   name="status"
@@ -228,7 +231,7 @@ const EditInventoryForm = () => {
                 />
                 <label
                   htmlFor="out-of-stock"
-                  className="add-inventory__form-label add-inventory__form-label--status"
+                  className="edit-inventory__form-label edit-inventory__form-label--status"
                 >
                   Out of stock
                 </label>
@@ -236,12 +239,15 @@ const EditInventoryForm = () => {
             </div>
 
             {inStock && (
-              <div className="add-inventory__quantity">
-                <label htmlFor="quantity" className="add-inventory__form-label">
+              <div className="edit-inventory__quantity">
+                <label
+                  htmlFor="quantity"
+                  className="edit-inventory__form-label"
+                >
                   Quantity
                 </label>
                 <input
-                  className="add-inventory__form-input"
+                  className="edit-inventory__form-input"
                   placeholder={quantity}
                   id="quantity"
                   type="text"
@@ -253,11 +259,14 @@ const EditInventoryForm = () => {
             )}
             {quantity === "" && <EmptyField />}
 
-            <label htmlFor="warehouse-id" className="add-inventory__form-label">
+            <label
+              htmlFor="warehouse-id"
+              className="edit-inventory__form-label"
+            >
               Warehouse
             </label>
             <select
-              className="add-inventory__form-input add-inventory__form-input--remove-default-dropdown"
+              className="edit-inventory__form-input edit-inventory__form-input--remove-default-dropdown"
               name="warehouseId"
               id="warehouse-id"
               value={warehouseName}
@@ -276,11 +285,14 @@ const EditInventoryForm = () => {
           </div>
         </div>
 
-        <div className="add-inventory__action-container">
-          <Link className="add-inventory__cancel-item" to={"/"}>
+        <div className="edit-inventory__action-container">
+          <Link
+            className="edit-inventory__cancel-item"
+            onClick={() => navigate(-1)}
+          >
             Cancel
           </Link>
-          <button className="add-inventory__add-item">Save</button>
+          <button className="edit-inventory__edit-item">Save</button>
         </div>
       </form>
     </section>
