@@ -6,6 +6,7 @@ import { Warehouses } from "./pages/Warehouses/Warehouses";
 import { WarehouseDetails } from "./pages/WarehouseDetails/WarehouseDetails";
 import { InventoryDetails } from "./pages/InventoryDetails/InventoryDetails";
 import { AddInventory } from "./pages/AddInventory/AddInventory";
+import { EditInventory } from "./pages/EditInventory/EditInventory";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/inventory/add-inventory" element={<AddInventory />} />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
-        {/* <Route path="/inventory/:inventoryId/edit" element={<EditInventory/>} /> */}
+        <Route path="/inventory/:inventoryId/edit" element={<EditInventory/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </main>

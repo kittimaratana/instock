@@ -2,19 +2,23 @@ import "./InventoryDetailsTable.scss";
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEditButton from "../../components/CircleEditButton/CircleEditButton";
 import Status from "../../components/Status/Status";
+import { NavLink, useParams } from "react-router-dom";
 
 function InventoryDetailsTable({ inventoryInfo }) {
+  const { inventoryId } = useParams();
   return (
     <section className="inventoryDetailsTable">
       <div className="inventoryDetailsTable__header">
         <div className="inventoryDetailsTable__header-container">
-            <ArrowBack to="/inventory"/>
+          <ArrowBack to="/inventory" />
           <h1 className="inventoryDetailsTable__header-title">
             {inventoryInfo.item_name}
           </h1>
         </div>
         <div className="inventoryDetailsTable__header-edit">
-          <CircleEditButton />
+          <NavLink to={`/inventory/${inventoryId}/edit`}>
+            <CircleEditButton />
+          </NavLink>
         </div>
       </div>
       <hr className="inventoryDetailsTable__header-divider1" />
