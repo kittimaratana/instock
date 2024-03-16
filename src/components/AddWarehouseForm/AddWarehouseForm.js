@@ -2,6 +2,7 @@ import "./AddWarehouseForm.scss";
 import { useState } from "react";
 import ArrowBack from "../ArrowBack/ArrowBack";
 import { BASE_URL } from "../../utils/constant-variables";
+import { useNavigate } from "react-router-dom";
 
 const CreateNewWarehouse = () => {
     const [warehouse_name, setWarehouse_name] = useState('');
@@ -14,6 +15,8 @@ const CreateNewWarehouse = () => {
     const [contact_email, setContact_email] = useState('');
 
     const [isPending, setIsPending] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -39,8 +42,6 @@ const CreateNewWarehouse = () => {
             return;
         }
 
-       
-
         const newWarehouse = {
             warehouse_name,
             address,
@@ -60,17 +61,25 @@ const CreateNewWarehouse = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newWarehouse)
-            }).then(setIsPending(false));
+            }).then(setIsPending(false),
+                   );
 
             if (response.ok) {
                 // Handle successful add
                 console.log(response.statusText);
+                setSubmitSuccess(true);
+                setTimeout(() => {
+                    navigate("/");
+                }, 3000)
+
             } else {
                 // Handle error response from API
                 console.error('Failed to add warehouse:', response.statusText);
+                setSubmitSuccess(false)
             }
         } catch (error) {
             console.error('Error adding warehouse:', error);
+            setSubmitSuccess(false);
         }
     };
 
@@ -163,6 +172,8 @@ const CreateNewWarehouse = () => {
 
                     </div>
 
+                    <hr className="add-warehosue__divider add-warehosue__divider--between-components" />
+
                     <div className="add-warehouse__details">
 
                         <h2>Contact Details</h2>
@@ -223,7 +234,10 @@ const CreateNewWarehouse = () => {
                     </div>
 
                     {!isPending && <button className="add-warehouse__add-button">+ Add Warehouse</button>}
-                    {isPending && <button disabled className="add-warehouse__add-button">Addding Warehouse...</button>}
+                    {isPending && <a><button disabled className="add-warehouse__add-button">Addding Warehouse...</button></a>}
+                    {submitSuccess && (
+                        <div className="add-warehouse__success-message">Successfully added new warehouse. Redirecting you to the main page...</div>
+                    )}
 
                 </div>
 
