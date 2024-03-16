@@ -15,20 +15,22 @@ function WarehouseTable() {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    const fetchWarehouse = async () => {
-      try {
-        const responseWarehouses = await axios.get(
-          `${BASE_URL}/api/warehouses`
-        );
-        setWarehouses(responseWarehouses.data);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setHasError(true);
-      }
-    };
+    // Fetching warehouses on page load
     fetchWarehouse();
   }, []);
+
+  const fetchWarehouse = async () => {
+    try {
+      const responseWarehouses = await axios.get(
+        `${BASE_URL}/api/warehouses`
+      );
+      setWarehouses(responseWarehouses.data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setHasError(true);
+    }
+  };
 
   const invokeDeleteModal = (id, name) => {
     setDeleteItem({ id: id, name: name });
@@ -36,8 +38,9 @@ function WarehouseTable() {
 
   const deleteSelectedItem = async () => {
     try {
-      const updatedWarehouses = await axios.delete(`${BASE_URL}/api/warehouses/${deleteItem.id}`);
-      setWarehouses(updatedWarehouses.data);
+      await axios.delete(`${BASE_URL}/api/warehouses/${deleteItem.id}`);
+      // Fetching updated warehouses on delete
+      fetchWarehouse(); 
       setDeleteItem(null);
     } catch {
       setHasError(true);
