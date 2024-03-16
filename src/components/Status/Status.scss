@@ -22,6 +22,7 @@
 
 .status {
   @include body-small;
+  font-weight: 600;
   &__badge {
     display: inline-block;
     position: relative;
