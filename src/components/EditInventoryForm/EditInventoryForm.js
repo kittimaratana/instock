@@ -135,6 +135,17 @@ const EditInventoryForm = () => {
     }
   };
 
+  let quantityErrorMessage = null;
+  if (quantity === "" || !isTypeOfQuantityInt) {
+    quantityErrorMessage = <EmptyField message="Please insert valid number" />;
+  } else if (parseInt(quantity) < 0) {
+    quantityErrorMessage = <EmptyField message="Quantity can't be negative" />;
+  } else if (parseInt(quantity) === 0) {
+    quantityErrorMessage = (
+      <EmptyField message="Quantity can't be 0 when in stock" />
+    );
+  }
+
   return (
     <section className="edit-inventory">
       <section className="edit-inventory__header">
@@ -263,11 +274,7 @@ const EditInventoryForm = () => {
                     onChange={handleChangeQuantity}
                   />
                 </div>
-                {(quantity === "" ||
-                  !isTypeOfQuantityInt ||
-                  parseInt(quantity) === 0) && (
-                  <EmptyField message="Please insert valid number" />
-                )}
+                {quantityErrorMessage}
               </>
             )}
 
