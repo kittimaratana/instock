@@ -10,6 +10,14 @@
   flex-direction: column;
   width: 100%;
 
+  &-item {
+    &:hover {
+      @include tablet {
+        background-color: rgba(46, 102, 229, 0.07);
+      }
+    }
+  }
+
   &__container {
     padding: 0;
     display: flex;

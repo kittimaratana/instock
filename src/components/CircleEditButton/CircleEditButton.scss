@@ -13,10 +13,18 @@
   align-items: center;
   justify-content: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @include tablet {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     width: auto;
+    &:hover {
+      background-color: $graphite;
+      cursor: pointer;
+    }
   }
 
   &__icon {

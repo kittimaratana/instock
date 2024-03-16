@@ -19,4 +19,7 @@
     @include tablet {
       width: 10.5rem;
     }
+    &:hover {
+      background-color: $graphite;
+    }
 }

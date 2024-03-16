@@ -13,6 +13,7 @@ function WareHouseItem({
   contactName,
   contactPhone,
   contactEmail,
+  invokeDeleteModal
 }) {
   //function WareHouseItem(city, address, contactName, contactPhone, contactEmail) {
   return (
@@ -45,7 +46,7 @@ function WareHouseItem({
           </div>
         </div>
         <div className="warehouse-item__wrap-section3">
-          <DeleteButton />
+          <DeleteButton invokeDeleteModal={invokeDeleteModal} />
           <EditButton />
         </div>
       </div>
@@ -59,7 +60,7 @@ function WareHouseItem({
           {contactPhone} <br /> {contactEmail}
         </p>
         <div className="warehouse-item__action">
-          <DeleteButton />
+          <DeleteButton invokeDeleteModal={invokeDeleteModal} />
           <EditButton />
         </div>
       </div>
