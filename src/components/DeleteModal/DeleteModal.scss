@@ -1,0 +1,91 @@
+@use "../../styles/partials/_colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.delete-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  &__section {
+    background-color: #fefefe;
+    padding: 0 16px;
+    border: 1px solid #888;
+    width: 100%;
+    height: 100%;
+    img {
+        margin-top: 16px;
+        float: right;
+    }
+    @include tablet {
+        width: 672px;
+        height: 262px;
+        margin: 195px auto 0 auto;
+    }
+  }
+  &__content {
+    @include tablet {
+        padding: 0 32px;
+    }
+    @include desktop {
+        padding: 0 48px;
+    }
+  }
+  &__header {
+    margin-top: 60px;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 36px;
+    @include tablet {
+        margin-top: 32px;
+    }
+  }
+  &__body {
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 350px;
+    @include tablet {
+        margin-top: 32px;
+        justify-content: end;
+        padding: 0 32px;
+    }
+    @include desktop {
+        padding: 0 48px;
+    }
+  }
+  &__close {
+    width: 162px;
+    height: 36px;
+    gap: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(189, 197, 213, 1);
+    background-color: rgba(255, 255, 255, 1);
+    @include tablet {
+        width: 71px;
+        height: 38px;
+    }
+  }
+  &__delete {
+    width: 162px;
+    height: 36px;
+    margin-left: 16px;
+    gap: 10px;
+    border-radius: 20px;
+    border: 0;
+    color: $white;
+    background-color: rgba(201, 69, 21, 1);
+    @include tablet {
+        width: 71px;
+        height: 38px;
+    }
+  }
+}
