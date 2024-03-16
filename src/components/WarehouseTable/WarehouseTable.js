@@ -6,6 +6,7 @@ import sort from "../../assets/images/sort-24px.svg";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function WarehouseTable() {
   const [warehouses, setWarehouses] = useState([]);
@@ -46,7 +47,11 @@ function WarehouseTable() {
         <h1 className="warehouse__header-name">Warehouses</h1>
         <div className="warehouse__search-add-container">
           <SearchInput/>
-          <AddButton message="+ Add New Warehouse"/>
+
+          <Link  to="/warehouse/add-warehouse">
+          <AddButton  message="+ Add New Warehouse"/>
+          </Link>
+          
         </div>
       </section>
       <section className="warehouse__label-container">

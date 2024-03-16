@@ -1,6 +1,7 @@
 import "./AddWarehouseForm.scss";
 import { useState } from "react";
 import ArrowBack from "../ArrowBack/ArrowBack";
+import { BASE_URL } from "../../utils/constant-variables";
 
 const CreateNewWarehouse = () => {
     const [warehouse_name, setWarehouse_name] = useState('');
@@ -12,20 +13,102 @@ const CreateNewWarehouse = () => {
     const [contact_phone, setContact_phone] = useState('');
     const [contact_email, setContact_email] = useState('');
 
-    const handleSubmit = (e) => {
+    const [isPending, setIsPending] = useState(false);
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const newWarehouse = { warehouse_name };
-        //validation here
-        console.log(newWarehouse);
+
+         // Convert the phone number to the desired format
+         const formattedPhone = formatPhoneNumber(contact_phone);
+        // Validation checks
+        if (
+            !warehouse_name ||
+            !address ||
+            !city ||
+            !country ||
+            !contact_name ||
+            !contact_position ||
+            !contact_phone ||
+            !validatePhone(formattedPhone) ||
+            !contact_email ||
+            !validateEmail(contact_email)
+        ) {
+            // If any field is empty or email/phone is not valid, return without submitting
+            console.error('Please fill out all fields and provide a valid email address and phone number.');
+            return;
+        }
+
+       
+
+        const newWarehouse = {
+            warehouse_name,
+            address,
+            city,
+            country,
+            contact_name,
+            contact_position,
+            contact_phone: formattedPhone,
+            contact_email
+        };
+
+        setIsPending(true);
+
+        try {
+            // Post the newWarehouse object to the DB via API call
+            const response = await fetch(`${BASE_URL}/api/warehouses`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newWarehouse)
+            }).then(setIsPending(false));
+
+            if (response.ok) {
+                // Handle successful add
+                console.log(response.statusText);
+            } else {
+                // Handle error response from API
+                console.error('Failed to add warehouse:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error adding warehouse:', error);
+        }
+    };
+
+    // Function to validate email format
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    // Function to validate phone number format
+    const validatePhone = (phone) => {
+        // Regular expression for validating phone number format
+        const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/;
+        return phoneRegex.test(phone);
+    };
+
+    // Function to format phone number to +1 (xxx) xxx-xxxx
+    const formatPhoneNumber = (phone) => {
+        // Remove any non-numeric characters
+        const numbers = phone.replace(/\D/g, '');
+
+        // Add country code and format
+        let formattedNumber = '+1 (' + numbers.substring(0, 3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6, 10);
+
+        return formattedNumber;
+
+    };
 
 
-    }
+
+
+
 
     return (
         <section className="add-warehouse">
             <section className="add-warehouse__header">
-            <ArrowBack/>
-                <h1 className="warehouse__header-name">Add New Warehouse</h1>
+                <ArrowBack />
+                <h1 className="add-warehouse__header-name">Add New Warehouse</h1>
             </section>
 
             <hr className="warehouse__divider" />
@@ -47,7 +130,7 @@ const CreateNewWarehouse = () => {
 
 
                         <label className="add-warehouse__form-label">Address:  </label>
-                        <input 
+                        <input
                             className="add-warehouse__form-input"
                             placeholder="Street address"
                             type="text"
@@ -59,8 +142,8 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">City:</label>
                         <input
-                        className="add-warehouse__form-input"    
-                        placeholder="City"
+                            className="add-warehouse__form-input"
+                            placeholder="City"
                             type="text"
                             required
                             value={city}
@@ -70,23 +153,22 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Country: </label>
                         <input
-                        className="add-warehouse__form-input"
-                        placeholder="Country"
+                            className="add-warehouse__form-input"
+                            placeholder="Country"
                             type="text"
                             required
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
 
-
                     </div>
 
                     <div className="add-warehouse__details">
 
-                    <h2>Contact Details</h2>
+                        <h2>Contact Details</h2>
                         <label className="add-warehouse__form-label" >Contact Name:
                             <input
-                            className="add-warehouse__form-input"
+                                className="add-warehouse__form-input"
                                 placeholder="Contact Name"
                                 type="text"
                                 required
@@ -97,7 +179,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Contact Position:
                             <input
-                            className="add-warehouse__form-input"
+                                className="add-warehouse__form-input"
                                 placeholder="Contact Position"
                                 type="text"
                                 required
@@ -108,7 +190,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Phone Number:
                             <input
-                            className="add-warehouse__form-input"
+                                className="add-warehouse__form-input"
                                 placeholder="Phone Number"
                                 type="text"
                                 required
@@ -119,7 +201,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Email:
                             <input
-                            className="add-warehouse__form-input"
+                                className="add-warehouse__form-input"
                                 placeholder="Email"
                                 type="text"
                                 required
@@ -136,15 +218,19 @@ const CreateNewWarehouse = () => {
 
 
                 <div className="add-warehouse__buttons-group">
+                    <div className="add-warehouse__cancel-button">
+                        <a href="/"> Cancel </a>
+                    </div>
 
-                <a href="/"> Cancel </a>
-                <button className="add-warehouse__add-button">Add Warehouse</button>
-                
+                    {!isPending && <button className="add-warehouse__add-button">+ Add Warehouse</button>}
+                    {isPending && <button disabled className="add-warehouse__add-button">Addding Warehouse...</button>}
+
                 </div>
-                
+
             </form>
         </section>
     );
+
 }
 
 export default CreateNewWarehouse;

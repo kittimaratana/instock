@@ -5,86 +5,169 @@
 @use "../../styles/partials/_variables" as *;
 
 .add-warehouse {
+  width: 100%;
+  padding: $mobile-padding;
+  padding-top: 1.5rem;
+
+  @include tablet {
+    padding: $tablet-padding;
+    flex-direction: row;
+  }
+
+  &__header {
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center
+  }
+
+  &__header-name {
+
+    @include page-header;
     width: 100%;
-    padding: $mobile-padding;
-    padding-top: 1.5rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+
+
     @include tablet {
-      padding: $tablet-padding;
-      flex-direction: row;
+        padding: 2rem;
     }
-  
-    &__header {
+  }
+
+  &__divider {
+    width: 100%;
+    border: 0.0625rem solid $cloud;
+  }
+
+  &__details-container {
+    border-bottom: 1px $cloud;
+    width: 100%;
+
+    @include tablet{
       display: flex;
-      flex-wrap: wrap;
       flex-direction: row;
-      justify-content: flex-start;
-      align-items: center
-     
-    }
-  
-    &__header-name {
-      @include page-header;
-    //   margin-right: 15rem;
-      padding-bottom: 1rem;
-      @include tablet {
-        margin-right: 5rem;
-      }
-      margin-left: 1rem;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1rem;
+      
+      // width: calc(50% - 4rem);
     }
 
-    &__divider {
-        width: 100%;
-        border: 0.0625rem solid $cloud;
-      }
 
-    &__details-container {
-        // display: flex;
-        // flex-direction: column;
-        border-bottom: 1px;
-        width: 100%;
-        
+    
+  }
+
+  &__details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid;
+    border-color: $cloud;
+
+    @include tablet{
+      width: calc(50% - 2rem);
+      border-bottom: none;
+      border-left: 5px $red;
+    
     }
 
-    &__details {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
 
-        padding-bottom: 1rem;
-        border-bottom: 1px solid;
-        border-color: $cloud;
+  }
 
+  &__form-label {
+    width: 100%;
+  }
+
+
+  &__form-input {
+    @include body-medium;
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0 1rem 0 1rem;
+    border: 0.0625rem solid $cloud;
+    background-color: $white;
+    color: $slate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    margin-bottom: 1rem;
+
+    @include tablet {
+      height: 2.375rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__buttons-group {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2rem;
+    justify-content: space-around;
+
+    @include tablet {
+      border-top: 1px solid $cloud;
+      justify-content: flex-end;
     }
 
-    &__form-label{
-        width: 100%;
+  }
+
+  &__cancel-button{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 2.25rem;
+    color: $black;
+    border: 1px solid $cloud;
+    background-color: $white;
+    border-radius: 20px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+    a { color: inherit; } 
+
+    @include tablet {
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    &__form-input{
-        width: 100%;
-        height: 2rem;
-        padding-left: 1rem;
-        margin-bottom: 1rem;
-        border-width: 1px;
-        border-radius: 20px;
-        border-color: $cloud;
 
+  }
+  &__cancel-button:hover{
+    border-color: $blue;
+  }
+
+
+  &__add-button {
+    width: 50%;
+    color: white;
+    border: none;
+    background-color: $blue;
+    border-radius: 20px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+
+    @include tablet {
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    &__buttons-group{
-        display: flex;
-        flex-direction: row;
-        margin-top: 1rem;
-        justify-content: space-around;
-        
-    }
+  }
 
-    &__add-button{
-        width: 7rem;
-        color: white;
-        border: none;
-        background-color: $blue;
-        border-radius: 20px;
-    }
+  &__add-button:hover{
+    background-color: $graphite;
+  }
 
 }
