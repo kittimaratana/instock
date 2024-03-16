@@ -19,16 +19,14 @@
 
     @include tablet {
       display: flex;
-      padding: 0 $tablet-padding;
-      margin: $mobile-padding 0;
+      padding: 1rem 2rem;
       @include body-medium;
-      //height: 2.5rem;
       align-items: center;
       gap: 1rem;
     }
 
     @include desktop {
-        padding: 0 3rem;
+      padding: 1rem 3rem;
     }
   }
 
@@ -101,7 +99,7 @@
     align-items: center;
 
     @include desktop {
-        width: 29%;
+      width: 29%;
     }
   }
 
@@ -111,7 +109,7 @@
     align-items: center;
 
     @include desktop {
-        width: 18%;
+      width: 18%;
     }
   }
 
@@ -121,7 +119,7 @@
     align-items: center;
 
     @include desktop {
-        width: 24%;
+      width: 24%;
     }
   }
 
@@ -136,8 +134,8 @@
     }
 
     @include desktop {
-        width: 7%;
-        justify-content: space-between;
+      width: 7%;
+      justify-content: space-between;
     }
   }
 }

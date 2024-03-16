@@ -5,7 +5,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_components" as *;
 
-.add-inventory {
+.edit-inventory {
   width: 100%;
 
   @include tablet {
@@ -14,7 +14,9 @@
 
   &__header {
     width: 100%;
+    display: flex;
   }
+
   &__header-container {
     width: 100%;
     padding: 2rem 1rem 1rem 1.5rem;
@@ -22,16 +24,6 @@
 
     @include tablet {
       padding-bottom: 1.6rem;
-    }
-
-    &-arrow {
-      padding-top: 0.3rem;
-      @include tablet {
-        padding-top: 0;
-      }
-      @include desktop {
-        padding-top: 0.6rem;
-      }
     }
   }
 
@@ -54,8 +46,6 @@
   }
 
   &__details-container {
-    // display: flex;
-    // flex-direction: column;
     border-bottom: 1px;
     width: 100%;
 
@@ -119,8 +109,8 @@
     }
 
     &--description {
+      padding-top: 0.4rem;
       height: 7.5rem;
-      padding-bottom: 5rem;
     }
 
     &--remove-default-dropdown {
@@ -174,29 +164,31 @@
     width: 48%;
 
     @include tablet {
-      width: 11%;
+      width: 12%;
     }
 
     @include desktop {
-      width: 8%;
+      width: 9%;
     }
+
     &:hover {
       border-color: $blue;
       color: $blue;
     }
   }
 
-  &__add-item {
+  &__edit-item {
     @include button;
     @include body-medium;
     width: 48%;
 
     @include tablet {
-      width: 15%;
+      width: 9%;
     }
 
     @include desktop {
-      width: 10%;
+      width: 7%;
+      margin-right: 1rem;
     }
 
     &:hover {

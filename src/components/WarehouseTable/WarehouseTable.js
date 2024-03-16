@@ -91,7 +91,7 @@ function WarehouseTable() {
       <hr className="warehouse__divider1" />
       {warehouses.map((warehouse) => {
         return (
-          <section key={warehouse.id}>
+          <section className="warehouse__item" key={warehouse.id}>
             <WareHouseItem
               warehouseName={warehouse.warehouse_name}
               address={warehouse.address}
