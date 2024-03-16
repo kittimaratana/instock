@@ -87,7 +87,7 @@ const AddInventoryForm = () => {
     }
 
     if (inStock) {
-      if (quantity === "" || !isTypeOfQuantityInt || parseInt(quantity) === 0) {
+      if (quantity === "" || !isTypeOfQuantityInt || parseInt(quantity) <= 0) {
         fieldError = true;
       }
     }
