@@ -4,12 +4,11 @@
 @use "../../styles/partials/_global" as *;
 @use "../../styles/partials/_mixins" as *;
 
-
 .search {
   @include body-medium;
   padding-bottom: 1rem;
   &__field {
-    width: 18.4375rem;
+    width: 100%;
     height: 2.25rem;
     border: 0.0625rem solid $cloud;
     border-radius: 1.25rem;
