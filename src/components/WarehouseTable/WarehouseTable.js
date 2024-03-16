@@ -65,6 +65,7 @@ function WarehouseTable() {
       <SearchAndAddButtonHeader
         title="Warehouses"
         button_text={"+ Add New Warehouse"}
+        link_to="warehouse/add-warehouse"
       />
       <section className="warehouse__label-container">
         <h4 className="warehouse__label-warehouse">

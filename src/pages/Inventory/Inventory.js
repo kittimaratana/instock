@@ -5,7 +5,6 @@ import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 
-
 export const Inventory = () => {
   const [inventories, setInventories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,8 +39,12 @@ export const Inventory = () => {
 
   return (
     <div className="inventory__center-wrap">
-      
-      <SearchAndAddButtonHeader className="inventory__header" title={'Inventory'} button_text={"+ Add New Item"}/>
+      <SearchAndAddButtonHeader
+        className="inventory__header"
+        title="Inventory"
+        button_text="+ Add New Item"
+        link_to="/inventory/add-inventory"
+      />
 
       <hr className="inventory__divider" />
 
