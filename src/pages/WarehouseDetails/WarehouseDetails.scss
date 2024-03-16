@@ -39,13 +39,14 @@
     @include tablet {
       display: inline;
       margin: 0 $tablet-padding;
-      margin-left: 4rem;
+      margin-left: 5rem;
+      margin-right: 3rem;
     }
-    @include tablet {
-      margin-left: 7rem;
-    }
+    // @include tablet {
+    //   margin-left: 7rem;
+    // }
     @include desktop {
-      margin-left: 11rem;
+      margin-left: 10rem;
     }
   }
   &__header {
@@ -95,8 +96,14 @@
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
-    // @include tablet {
-    //   display: none;
+  }
+
+  &__divider2 {
+    width: 100%;
+    border: 0.0625rem solid $cloud;
+    @include tablet {
+      display: none;
+    }
   }
 
   &__container {
@@ -118,9 +125,9 @@
         width: 60%;
       }
       @include desktop {
-        width:55%;
+        width: 55%;
         margin-right: 2rem;
-      } 
+      }
     }
   }
   &__col {
@@ -159,6 +166,83 @@
     &--align-text {
       display: flex;
       text-align: center;
+    }
+  }
+
+  &__label-container {
+    display: none;
+
+    @include tablet {
+      @include table-header;
+      display: flex;
+      color: $slate;
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+      width: 100%;
+      height: 2.5rem;
+      background-color: $lightgray;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @include desktop {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  &__sort {
+    height: 1rem;
+  }
+
+  &__label-item {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  &__label-category {
+    width: 18%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 17%;
+    }
+  }
+
+  &__label-status {
+    width: 28%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 27%;
+    }
+  }
+
+  &__label-quantity {
+    width: 13.5%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 23%;
+    }
+  }
+
+  &__label-action {
+    width: 11.5%;
+    display: flex;
+    justify-content: flex-end;
+
+    @include desktop {
+      width: 6%;
+      padding-left: 0.5rem;
+      justify-content: space-between;
     }
   }
 }
