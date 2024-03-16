@@ -1,11 +1,9 @@
 import "./Inventory.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import AddButton from "../../components/AddButton/AddButton";
-import SearchInput from "../../components/SearchInput/SearchInput";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
-import { Link } from "react-router-dom";
+import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 
 export const Inventory = () => {
   const [inventories, setInventories] = useState([]);
@@ -41,18 +39,13 @@ export const Inventory = () => {
 
   return (
     <div className="inventory__center-wrap">
-      <section className="inventory__header">
-        <h1 className="inventory__header-title">Inventory</h1>
-        <div className="inventory__header-actions">
-          <SearchInput />
-          <Link to="/inventory/add-inventory">
-            <AddButton
-              className="inventory__header-add-button"
-              message="+ Add New Item"
-            />
-          </Link>
-        </div>
-      </section>
+      <SearchAndAddButtonHeader
+        className="inventory__header"
+        title="Inventory"
+        button_text="+ Add New Item"
+        link_to="/inventory/add-inventory"
+      />
+
       <hr className="inventory__divider" />
 
       <InventoriesList inventories={inventories} withWarehouseName={true} />
