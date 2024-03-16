@@ -5,6 +5,7 @@ import { Inventory } from "./pages/Inventory/Inventory";
 import { Warehouses } from "./pages/Warehouses/Warehouses";
 import { WarehouseDetails } from "./pages/WarehouseDetails/WarehouseDetails";
 import { InventoryDetails } from "./pages/InventoryDetails/InventoryDetails";
+import { AddWarehouse } from "./pages/AddWarehouse/AddWarehouse";
 import { AddInventory } from "./pages/AddInventory/AddInventory";
 import { EditInventory } from "./pages/EditInventory/EditInventory";
 import Header from "./components/Header/Header";
@@ -17,7 +18,7 @@ function App() {
       <main>
       <Routes>
         <Route path="/" element={<Warehouses />} />
-        {/* <Route path="warehouse/add-warehouse" element={<AddWarehouse />} /> */}
+        <Route path="warehouse/add-warehouse" element={<AddWarehouse />} />
         <Route path="warehouse/:warehouseId" element={<WarehouseDetails/>} />
         {/* <Route path="warehouse/:warehouseId/edit" element={<EditWarehouse/>} /> */}
         <Route path="/inventory" element={<Inventory />} />
