@@ -45,6 +45,11 @@ const AddInventoryForm = () => {
         setSubmitSuccess(true);
 
         try {
+            
+            if(e.target.warehouseId.value ==="") {
+
+            }
+
             let quantity = "0";
             
             if(e.target.status.value==="In Stock") {
