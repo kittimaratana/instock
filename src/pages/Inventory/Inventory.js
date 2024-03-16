@@ -1,7 +1,6 @@
 import "./Inventory.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import sort from "../../assets/images/sort-24px.svg";
 import AddButton from "../../components/AddButton/AddButton";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import { BASE_URL } from "../../utils/constant-variables";
@@ -40,35 +39,19 @@ export const Inventory = () => {
   }
 
   return (
-    <div className="warehouse-details__center-wrap">
+    <div className="inventory__center-wrap">
       <section className="inventory__header">
-        <h1 className="inventory__header-name">Inventory</h1>
-        <div className="inventory__search-add-container">
-          <SearchInput/>
-          <AddButton message="+ Add New Item"/>
+        <h1 className="inventory__header-title">Inventory</h1>
+        <div className="inventory__header-actions">
+          <SearchInput />
+          <AddButton
+            className="inventory__header-add-button"
+            message="+ Add New Item"
+          />
         </div>
       </section>
-      <hr className="inventory__divider1" />
-      
-      <section className="inventory__label-container">
-        <h4 className="inventory__label-item">
-          INVENTORY ITEM{" "}
-          <img className="inventory__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="inventory__label-category">
-          CATEGORY{" "}
-          <img className="inventory__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="inventory__label-status">
-          STATUS{" "}
-          <img className="inventory__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="inventory__label-quantity">
-          QUANTITY{" "}
-          <img className="inventory__sort" src={sort} alt="sort" />
-        </h4>
-        <h4 className="inventory__label-action">ACTIONS</h4>
-      </section>
+      <hr className="inventory__divider" />
+
       <InventoriesList inventories={inventories} withWarehouseName={true} />
     </div>
   );
