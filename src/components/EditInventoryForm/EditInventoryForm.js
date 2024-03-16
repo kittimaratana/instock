@@ -16,11 +16,11 @@ const EditInventoryForm = () => {
   const [inStock, setInStock] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [warehouseName, setWarehouseName] = useState("");
-  const [warehouseId, setWarehouseId] = useState(-1);
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [isTypeOfQuantityInt, setIsTypeOfQuantityInt] = useState(false);
 
   const getWarehouseIdFromName = (warehouses, warehouseName) => {
     const currentWarehouse = warehouses.find(
@@ -47,6 +47,9 @@ const EditInventoryForm = () => {
         setCategory(inventoryResponse.data.category);
         setInStock(inventoryResponse.data.status === "In Stock" ? true : false);
         setQuantity(inventoryResponse.data.quantity);
+        setIsTypeOfQuantityInt(
+          Number.isInteger(parseInt(inventoryResponse.data.quantity))
+        );
         setWarehouses(warehousesResponse.data);
         setIsLoading(false);
       } catch (error) {
@@ -75,7 +78,11 @@ const EditInventoryForm = () => {
   const handleChangeItemName = (e) => setItemName(e.target.value);
   const handleChangeDescription = (e) => setDescription(e.target.value);
   const handleChangeCategory = (e) => setCategory(e.target.value);
-  const handleChangeQuantity = (e) => setQuantity(e.target.value);
+  const handleChangeQuantity = (e) => {
+    setQuantity(e.target.value);
+    const quantityInt = parseInt(e.target.value);
+    setIsTypeOfQuantityInt(Number.isInteger(quantityInt));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,13 +106,12 @@ const EditInventoryForm = () => {
     }
 
     if (inStock) {
-      if (quantity === "") {
+      if (quantity === "" || !isTypeOfQuantityInt || parseInt(quantity) === 0) {
         fieldError = true;
       }
     }
 
     if (fieldError === false) {
-      console.log(inventoryId)
       try {
         await axios.put(`${BASE_URL}/api/inventories/${inventoryId}`, {
           warehouse_id: getWarehouseIdFromName(warehouses, warehouseName),
@@ -113,7 +119,7 @@ const EditInventoryForm = () => {
           description: description,
           category: category,
           status: inStock ? "In Stock" : "Out of Stock",
-          quantity: quantity.toString(),
+          quantity: inStock ? quantity.toString() : "0",
         });
 
         setSubmitSuccess(true);
@@ -239,25 +245,31 @@ const EditInventoryForm = () => {
             </div>
 
             {inStock && (
-              <div className="edit-inventory__quantity">
-                <label
-                  htmlFor="quantity"
-                  className="edit-inventory__form-label"
-                >
-                  Quantity
-                </label>
-                <input
-                  className="edit-inventory__form-input"
-                  placeholder={quantity}
-                  id="quantity"
-                  type="text"
-                  name="quantity"
-                  value={quantity}
-                  onChange={handleChangeQuantity}
-                />
-              </div>
+              <>
+                <div className="edit-inventory__quantity">
+                  <label
+                    htmlFor="quantity"
+                    className="edit-inventory__form-label"
+                  >
+                    Quantity
+                  </label>
+                  <input
+                    className="edit-inventory__form-input"
+                    placeholder={quantity}
+                    id="quantity"
+                    type="text"
+                    name="quantity"
+                    value={quantity}
+                    onChange={handleChangeQuantity}
+                  />
+                </div>
+                {(quantity === "" ||
+                  !isTypeOfQuantityInt ||
+                  parseInt(quantity) === 0) && (
+                  <EmptyField message="Please insert valid number" />
+                )}
+              </>
             )}
-            {quantity === "" && <EmptyField />}
 
             <label
               htmlFor="warehouse-id"
@@ -294,6 +306,12 @@ const EditInventoryForm = () => {
           </Link>
           <button className="edit-inventory__edit-item">Save</button>
         </div>
+        {submitSuccess && (
+          <div className="add-inventory__success-message">
+            Successfully edited new inventory. Redirecting you to view{" "}
+            {itemName}!
+          </div>
+        )}
       </form>
     </section>
   );

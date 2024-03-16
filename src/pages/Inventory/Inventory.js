@@ -5,6 +5,7 @@ import AddButton from "../../components/AddButton/AddButton";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
+import { Link } from "react-router-dom";
 
 export const Inventory = () => {
   const [inventories, setInventories] = useState([]);
@@ -44,10 +45,12 @@ export const Inventory = () => {
         <h1 className="inventory__header-title">Inventory</h1>
         <div className="inventory__header-actions">
           <SearchInput />
-          <AddButton
-            className="inventory__header-add-button"
-            message="+ Add New Item"
-          />
+          <Link to="/inventory/add-inventory">
+            <AddButton
+              className="inventory__header-add-button"
+              message="+ Add New Item"
+            />
+          </Link>
         </div>
       </section>
       <hr className="inventory__divider" />
