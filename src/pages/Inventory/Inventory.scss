@@ -39,42 +39,4 @@
       display: none;
     }
   }
-
-  &__header {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: $mobile-padding;
-    padding-top: 2rem;
-    padding-bottom: .5rem; // 1.5rem - 1rem default margin bottom of the button itself
-
-    @include tablet {
-      padding: $tablet-padding;
-      flex-direction: row;
-      padding-bottom: 0.7rem;
-      align-items: center;
-    }
-
-    &-title {
-      @include page-header;
-      padding-bottom: 1rem;
-      @include tablet {
-        margin-right: 5rem;
-      }
-    }
-
-    &-actions {
-      @include tablet {
-        gap: $mobile-padding;
-        display: flex;
-      }
-    }
-
-    &-add-button {
-      @include tablet {
-        width: 7.5rem !important;
-      }
-    }
-  }
 }

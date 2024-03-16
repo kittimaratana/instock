@@ -15,9 +15,10 @@
     border: none;
     border-radius: 1.25rem;
     color: $white;
+    padding: .5rem 1rem;
 
     @include tablet {
-      width: 10.5rem;
+      width: fit-content;
     }
     &:hover {
       background-color: $graphite;
