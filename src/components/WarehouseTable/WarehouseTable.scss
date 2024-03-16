@@ -18,6 +18,7 @@
     @include tablet {
       padding: $tablet-padding;
       flex-direction: row;
+      padding-bottom: 0.7rem;
     }
   }
 
@@ -120,6 +121,14 @@
     @include desktop {
       width: 7%;
       justify-content: space-between;
+    }
+  }
+}
+
+.warehouse-item {
+  &:hover {
+    @include tablet {
+      background-color: rgba(46, 102, 229, 0.07);
     }
   }
 }

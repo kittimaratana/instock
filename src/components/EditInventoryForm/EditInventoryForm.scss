@@ -1,0 +1,198 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_components" as *;
+
+.edit-inventory {
+  width: 100%;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+  }
+
+  &__header-container {
+    width: 100%;
+    padding: 2rem 1rem 1rem 1.5rem;
+    display: flex;
+
+    @include tablet {
+      padding-bottom: 1.6rem;
+    }
+  }
+
+  &__header-name {
+    padding-left: 0.5rem;
+    @include page-header;
+  }
+
+  &__divider {
+    width: 100%;
+    border: 0.0625rem solid $cloud;
+
+    &--between-components {
+      @include tablet {
+        width: 0%;
+        border: none;
+        border-right: 0.0625rem solid $cloud;
+      }
+    }
+  }
+
+  &__details-container {
+    border-bottom: 1px;
+    width: 100%;
+
+    @include tablet {
+      display: flex;
+      padding: 1.5rem 0;
+    }
+  }
+
+  &__details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px;
+    padding: 1.5rem;
+
+    @include tablet {
+      padding: 0 2rem;
+    }
+  }
+
+  &__details-header-name {
+    @include subheader;
+    padding-bottom: 0.5rem;
+
+    @include tablet {
+      padding-bottom: 0;
+    }
+  }
+
+  &__form-label {
+    margin-top: 1rem;
+    @include labels-links-button;
+
+    @include tablet {
+      margin-top: 1.5rem;
+    }
+
+    &--status {
+      @include body-medium;
+      width: auto;
+      margin: 0;
+      color: $slate;
+    }
+  }
+
+  &__quantity {
+    @include tablet {
+      margin-top: 0.7rem;
+    }
+  }
+
+  &__form-input {
+    @include body-medium;
+    @include form-field;
+
+    &--status {
+      width: auto;
+      margin: 0;
+      color: $slate;
+    }
+
+    &--description {
+      padding-top: 0.4rem;
+      height: 7.5rem;
+    }
+
+    &--remove-default-dropdown {
+      appearance: none;
+      padding-top: 0.4rem;
+      margin-bottom: 0;
+      background: transparent
+        url("../../assets/images/arrow_drop_down-24px.svg") no-repeat right;
+      background-position-x: calc(100% - 0.625rem);
+    }
+  }
+
+  &__form-radio-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    color: $slate;
+  }
+
+  &__form-radio-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50%;
+    gap: 0.5rem;
+    color: $slate;
+  }
+
+  &__action-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    background-color: $lightgray;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+
+  &__cancel-item {
+    @include button;
+    @include body-medium;
+    background-color: $white;
+    color: $slate;
+    border: 0.0625rem solid $cloud;
+    width: 48%;
+
+    @include tablet {
+      width: 12%;
+    }
+
+    @include desktop {
+      width: 9%;
+    }
+
+    &:hover {
+      border-color: $blue;
+      color: $blue;
+    }
+  }
+
+  &__edit-item {
+    @include button;
+    @include body-medium;
+    width: 48%;
+
+    @include tablet {
+      width: 9%;
+    }
+
+    @include desktop {
+      width: 7%;
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background-color: $graphite;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 @import "./styles/partials/typography";
 @import "./styles/partials/_colors.scss";
+@import"./styles/partials/mixins";
 
 *,
 *::before,
@@ -15,5 +16,11 @@ a {
 }
 main {
   background-color: $lightgray;
-  padding-bottom: 1rem;
+  @include tablet {
+    min-height: 35rem;
+  }
+  @include desktop {
+    min-height: 35rem;
+  }
 }
+

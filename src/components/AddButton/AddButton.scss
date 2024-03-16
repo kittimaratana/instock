@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 18.4375rem;
+    width: 100%;
     height: 2.25rem;
     background-color: $blue;
     border: none;
@@ -18,5 +18,8 @@
 
     @include tablet {
       width: 10.5rem;
+    }
+    &:hover {
+      background-color: $graphite;
     }
 }

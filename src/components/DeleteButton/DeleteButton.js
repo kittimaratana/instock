@@ -1,8 +1,8 @@
 import iconDelete from "../../assets/images/delete_outline-24px.svg";
 
-function DeleteButton() {
+function DeleteButton({ invokeDeleteModal }) {
   return (
-    <img src={iconDelete} alt="delete"/>
+    <img src={iconDelete} alt="delete" onClick={invokeDeleteModal} />
   )
 }
 
