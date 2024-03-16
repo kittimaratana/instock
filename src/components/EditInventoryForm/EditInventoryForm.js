@@ -105,7 +105,7 @@ const EditInventoryForm = () => {
     }
 
     if (fieldError === false) {
-      console.log(warehouseId);
+      console.log(inventoryId)
       try {
         await axios.put(`${BASE_URL}/api/inventories/${inventoryId}`, {
           warehouse_id: getWarehouseIdFromName(warehouses, warehouseName),
@@ -113,12 +113,12 @@ const EditInventoryForm = () => {
           description: description,
           category: category,
           status: inStock ? "In Stock" : "Out of Stock",
-          quantity: quantity,
+          quantity: quantity.toString(),
         });
 
         setSubmitSuccess(true);
         setTimeout(() => {
-          navigate("/inventory");
+          navigate(`/inventory/${inventoryId}`);
         }, 3000);
       } catch (error) {
         console.log(error); //modify error message -------------
