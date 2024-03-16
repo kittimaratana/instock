@@ -5,6 +5,7 @@ import { Inventory } from "./pages/Inventory/Inventory";
 import { Warehouses } from "./pages/Warehouses/Warehouses";
 import { WarehouseDetails } from "./pages/WarehouseDetails/WarehouseDetails";
 import { InventoryDetails } from "./pages/InventoryDetails/InventoryDetails";
+import { AddInventory } from "./pages/AddInventory/AddInventory";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Warehouses />} />
         <Route path="warehouse/:warehouseId" element={<WarehouseDetails/>} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path="/inventory/add-inventory" element={<AddInventory />} />
         <Route path="/inventory/:inventoryId" element={<InventoryDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
