@@ -315,7 +315,7 @@ const EditInventoryForm = () => {
         </div>
         {submitSuccess && (
           <div className="add-inventory__success-message">
-            Successfully edited new inventory. Redirecting you to view{" "}
+            Successfully edited new inventory. Redirecting you to view
             {itemName}!
           </div>
         )}

@@ -124,48 +124,48 @@ const CreateNewWarehouse = () => {
                 <div className="add-warehouse__details-container">
                     <div className="add-warehouse__details">
                         <h2>Warehouse Details</h2>
-                        <label className="add-warehouse__form-label">Warehouse Name:<br /></label>
+                        <label htmlFor='warehouse-name' className="add-warehouse__form-label">Warehouse Name:<br /></label>
                         <input
                             className={warehouse_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Warehouse Name"
                             type="text"
-
+                            id="warehouse-name"
                             value={warehouse_name}
                             onChange={(e) => setWarehouse_name(e.target.value)}
                         />
                         {warehouse_name === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Address:  </label>
+                        <label htmlFor='warehouse-address' className="add-warehouse__form-label">Address:  </label>
                         <input
                             className={address === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Street address"
                             type="text"
-
+                            id="warehouse-address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
                         {address === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">City:</label>
+                        <label htmlFor='warehouse-city' className="add-warehouse__form-label">City:</label>
                         <input
                             className={city === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="City"
                             type="text"
-
+                            id='warehouse-sity'
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
                         {city === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Country: </label>
+                        <label htmlFor='warehouse-country' className="add-warehouse__form-label">Country: </label>
                         <input
                             className={country === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Country"
                             type="text"
-
+                            id="warehouse-country"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
@@ -178,36 +178,36 @@ const CreateNewWarehouse = () => {
                     <div className="add-warehouse__details">
 
                         <h2>Contact Details</h2>
-                        <label className="add-warehouse__form-label" >Contact Name: </label>
+                        <label htmlFor="contact-name" className="add-warehouse__form-label" >Contact Name: </label>
                         <input
                             className={contact_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Contact Name"
                             type="text"
-
+                            id="contact-name"
                             value={contact_name}
                             onChange={(e) => setContact_name(e.target.value)}
                         />
                         {contact_name === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Contact Position: </label>
+                        <label htmlFor="contact-position" className="add-warehouse__form-label">Contact Position: </label>
                         <input
                             className={contact_position === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Contact Position"
                             type="text"
-
+                            id="contact-position"
                             value={contact_position}
                             onChange={(e) => setContact_position(e.target.value)}
                         />
                         {contact_position === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Phone Number:</label>
+                        <label htmlFor="contact-phone" className="add-warehouse__form-label">Phone Number:</label>
                         <input
                             className={phoneErrorMessage && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Phone Number"
                             type="text"
-
+                            id="contact-phone"
                             value={contact_phone}
                             onChange={(e) => setContact_phone(e.target.value)}
                         />
@@ -215,12 +215,12 @@ const CreateNewWarehouse = () => {
 
 
 
-                        <label className="add-warehouse__form-label">Email:</label>
+                        <label htmlFor="contact-email" className="add-warehouse__form-label">Email:</label>
                         <input
                             className={!validateEmail(contact_email) && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Email"
                             type="text"
-
+                            id="contact-email"
                             value={contact_email}
                             onChange={(e) => setContact_email(e.target.value)}
                         />

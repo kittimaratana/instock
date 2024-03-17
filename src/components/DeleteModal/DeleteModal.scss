@@ -26,6 +26,10 @@
         margin: 12.188rem auto 0 auto;
     }
   }
+  &__close-icon{
+    cursor: pointer;
+  }
+
   &__content {
     @include tablet {
         padding: 0 2rem;

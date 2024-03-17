@@ -5,7 +5,7 @@ function DeleteModal({ header, body, clickClose, clickDelete }) {
   return (
     <main className="delete-modal">
       <section className="delete-modal__section">
-        <img src={closeIcon} alt="close" onClick={clickClose}/>
+        <img className="delete-modal__close-icon" src={closeIcon} alt="close" onClick={clickClose}/>
         <section className="delete-modal__content">
           <h1 className="delete-modal__header">{header}</h1>
           <p className="delete-modal__body">{body}</p>

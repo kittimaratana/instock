@@ -131,7 +131,7 @@ export function InventoriesListItem({
             }`}
         >
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
-          <Link to={`/inventory/${id}/edit`} >
+          <Link className="inventories-list__edit-button" to={`/inventory/${id}/edit`} >
             <EditButton />
           </Link>
         </div>

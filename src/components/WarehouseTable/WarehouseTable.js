@@ -28,7 +28,7 @@ function WarehouseTable() {
       setHasError(true);
     }
   };
-
+  // Setting required properties
   const invokeDeleteModal = (id, name) => {
     setDeleteItem({ id: id, name: name });
   };

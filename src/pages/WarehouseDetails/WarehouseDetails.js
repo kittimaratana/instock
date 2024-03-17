@@ -59,7 +59,7 @@ export const WarehouseDetails = () => {
   if (isLoading) {
     return <p>Is Loading...</p>;
   }
-
+  // Single Warehouse page
   return (
     <div className="warehouse-details__center-wrap">
       <section className="warehouse-details__header">

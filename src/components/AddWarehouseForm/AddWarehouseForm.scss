@@ -100,9 +100,10 @@
   }
 
   &__buttons-group {
+  
     display: flex;
     flex-direction: row;
-    padding: 2rem 2rem;
+    padding: 1rem 1.5rem;
     gap: 1rem;
     justify-content: space-around;
     background-color: $lightgray;
@@ -133,6 +134,7 @@
 
   &__cancel-button:hover {
     border-color: $blue;
+    color: $blue;
   }
 
 

@@ -117,7 +117,7 @@ const EditWarehouse = () => {
                 // Handle successful add
                 setSubmitSuccess(true);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate(`/warehouse/${warehouseId}`);
                 }, 3000)
 
             } else {
@@ -291,10 +291,10 @@ const EditWarehouse = () => {
                         <a href="/"> Cancel </a>
                     </div>
 
-                    {!isPending && <button className="edit-warehouse__add-button">+ Update Warehouse</button>}
+                    {!isPending && <button className="edit-warehouse__add-button">Save</button>}
                 </div>
                 {submitSuccess && (
-                    <div className="edit-warehouse__success-message">Successfully updated warehouse. Redirecting you to the main page...</div>
+                    <div className="edit-warehouse__success-message">Successfully updated warehouse. Redirecting you to the {warehouse_name} warehouse</div>
                 )}
 
             </form>
