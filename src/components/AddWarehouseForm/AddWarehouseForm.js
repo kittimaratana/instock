@@ -226,7 +226,7 @@ const CreateNewWarehouse = () => {
                             value={contact_phone}
                             onChange={(e) => setContact_phone(e.target.value)}
                         />
-                        {phoneErrorMessage}
+                        {hasSubmit && phoneErrorMessage }
                         
 
 

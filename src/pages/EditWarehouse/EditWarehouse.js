@@ -1,10 +1,11 @@
-import EditWarehouseForm from "../../components/EditWarehouseForm/EditWarehouseForm";
+import EditWarehouse from "../../components/EditWarehouseForm/EditWarehouseForm";
 import "./EditWarehouse.scss"
 
-export const EditWarehouse = () => {
+export const EditWarehousePage = () => {
   return (
     <div className="edit-warehouse__center-wrap">
-      <EditWarehouseForm/>
+      <EditWarehouse/>
     </div>
   );
   }
+  
