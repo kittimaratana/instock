@@ -146,7 +146,7 @@ const AddInventoryForm = () => {
             <ArrowBack />
           </div>
           <h1 className="add-inventory__header-name">
-            Add a New Inventory Item
+            Add New Inventory Item
           </h1>
         </div>
       </section>
