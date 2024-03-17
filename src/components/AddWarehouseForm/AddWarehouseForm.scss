@@ -3,14 +3,13 @@
 @use "../../styles/partials/_global" as *;
 @use "../../styles/partials/_mixins" as *;
 @use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/components" as *;
 
 .add-warehouse {
   width: 100%;
-  padding: $mobile-padding;
-  padding-top: 1.5rem;
 
   @include tablet {
-    padding: $tablet-padding;
+    // padding: $tablet-padding;
     flex-direction: row;
   }
 
@@ -19,56 +18,71 @@
     // flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center
+    align-items: center;
+    padding: 1.5rem;
+    padding-top: 2rem;
   }
 
   &__header-name {
-
+    
+    padding-left: 1rem;
     @include page-header;
     width: 100%;
-    padding: 1.5rem;
-    padding-top: 2rem;
+    
 
 
     @include tablet {
-        padding: 2rem;
+        // padding: 2rem;
     }
   }
 
-  &__divider {
-    width: 100%;
-    border: 0.0625rem solid $cloud;
-  }
+
 
   &__details-container {
-    border-bottom: 1px $cloud;
+    border-bottom: 0.0625rem solid $lightgray;
     width: 100%;
-
+    
     @include tablet{
       display: flex;
+      flex-wrap: nowrap;
       flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 1rem;
+      justify-content: center;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
       
-      // width: calc(50% - 4rem);
     }
 
 
     
   }
 
+  &__divider {
+    width: 100%;
+    border: 0.0625rem solid $lightgray;
+
+    &--between-components {
+      @include tablet {
+        width: 0%;
+        border: none;
+        border-right: 0.0625rem solid $cloud;
+      }
+    }
+  }
+
+  
+
   &__details {
+    padding: 1.5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+ 
     border-bottom: 1px solid;
     border-color: $cloud;
 
     @include tablet{
-      width: calc(50% - 2rem);
+      width: 100%;
+      padding: 0 2rem;
       border-bottom: none;
       border-left: 5px $red;
     
@@ -78,39 +92,37 @@
   }
 
   &__form-label {
-    width: 100%;
+    margin-top: 1rem;
+    @include labels-links-button;
+
+    @include tablet {
+      margin-top: 1.5rem;
   }
+}
 
 
   &__form-input {
+
     @include body-medium;
-    height: 2.25rem;
-    width: 100%;
-    border-radius: 1.25rem;
-    margin-top: 0.25rem;
-    padding: 0 1rem 0 1rem;
-    border: 0.0625rem solid $cloud;
-    background-color: $white;
-    color: $slate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+   @include form-field;
 
 
-    margin-bottom: 1rem;
+   
 
     @include tablet {
       height: 2.375rem;
-      margin-bottom: 1.5rem;
-    }
+      
   }
+}
 
   &__buttons-group {
     display: flex;
     flex-direction: row;
-    padding-top: 2rem;
+    padding: 2rem 2rem;
+    gap:1rem;
     justify-content: space-around;
+    background-color: $lightgray;
+    
 
     @include tablet {
       border-top: 1px solid $cloud;
@@ -120,18 +132,19 @@
   }
 
   &__cancel-button{
+    @include button;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 2.25rem;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // width: 50%;
+    // height: 2.25rem;
     color: $black;
     border: 1px solid $cloud;
     background-color: $white;
-    border-radius: 20px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    // border-radius: 20px;
+    // margin-left: 1rem;
+    // margin-right: 1rem;
     
     a { color: inherit; } 
 
@@ -149,13 +162,15 @@
 
 
   &__add-button {
-    width: 50%;
-    color: white;
-    border: none;
-    background-color: $blue;
-    border-radius: 20px;
-    margin-left: 1rem;
-    margin-right: 1rem;
+
+    @include button;
+    // width: 50%;
+    // color: white;
+    // border: none;
+    // background-color: $blue;
+    // border-radius: 20px;
+    // margin-left: 1rem;
+    // margin-right: 1rem;
     
 
     @include tablet {
@@ -168,6 +183,15 @@
 
   &__add-button:hover{
     background-color: $graphite;
+    cursor:pointer
   }
+
+  &__success-message {
+    @include body-medium;
+    width: 100%;
+    padding: 1rem;
+    background-color: $lightgray;
+  }
+
 
 }
