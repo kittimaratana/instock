@@ -17,6 +17,7 @@ a {
 }
 main {
   background-color: $lightgray;
+  min-height: 25rem;
   @include tablet {
     min-height: 52rem;
   }

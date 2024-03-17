@@ -103,7 +103,7 @@ const AddInventoryForm = () => {
       const warehouseSelected = warehouses.find((warehouse) => warehouse.warehouse_name === warehouseName);
 
       try {
-        const response = await axios.post(`${BASE_URL}/api/inventories`, {
+          await axios.post(`${BASE_URL}/api/inventories`, {
           warehouse_id: warehouseSelected.id,
           item_name: itemName,
           description: description,
