@@ -41,8 +41,8 @@ export const WarehouseDetails = () => {
   };
   const deleteSelectedInventoryItem = async () => {
     try {
-      await axios.delete(`${BASE_URL}/api/warehouses/${warehouseId}/inventories/${deleteInventoryItem.id}`);
-      fetchWarehouseData();
+      await axios.delete(`${BASE_URL}/api/inventories/${deleteInventoryItem.id}`);
+      fetchWarehouseData(warehouseId);
       setDeleteInventoryItem(null);
     } catch (error) {
       setHasError(true);
