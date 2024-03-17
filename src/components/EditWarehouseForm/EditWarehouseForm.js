@@ -2,7 +2,7 @@ import "./EditWarehouseForm.scss";
 import { BASE_URL } from "../../utils/constant-variables";
 import EmptyField from "../EmptyField/EmptyField";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
@@ -287,9 +287,13 @@ const EditWarehouse = () => {
 
 
                 <div className="edit-warehouse__buttons-group">
-                    <div className="edit-warehouse__cancel-button">
-                        <a href="/"> Cancel </a>
-                    </div>
+
+                    <Link
+                        className="edit-warehouse__cancel-button"
+                        onClick={() => navigate(-1)}
+                    >
+                        Cancel
+                    </Link>
 
                     {!isPending && <button className="edit-warehouse__add-button">Save</button>}
                 </div>
