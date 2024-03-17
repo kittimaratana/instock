@@ -5,7 +5,7 @@ import sort from "../../assets/images/sort-24px.svg";
 import AttributeLink from "../AttributeLink/AttributeLink";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
-export function InventoriesList({ inventories, withWarehouseName }) {
+export function InventoriesList({ inventories, withWarehouseName, invokeDeleteModal }) {
   return (
     <section className="inventories-list__container">
       <div className="inventories-list__labels">
@@ -70,11 +70,13 @@ export function InventoriesList({ inventories, withWarehouseName }) {
           key={inventory.id}
           {...inventory}
           withWarehouseName={withWarehouseName}
+          invokeDeleteModal={() => invokeDeleteModal(inventory.id, inventory.item_name)}
         />
       ))}
     </section>
   );
 }
+
 export function InventoriesListItem({
   category,
   id,
@@ -83,6 +85,7 @@ export function InventoriesListItem({
   status,
   warehouse_name,
   withWarehouseName,
+  invokeDeleteModal
 }) {
   return (
     <>
@@ -129,7 +132,7 @@ export function InventoriesListItem({
             withWarehouseName ? "margin-left" : ""
           }`}
         >
-          <DeleteButton />
+          <DeleteButton invokeDeleteModal={invokeDeleteModal}/>
           <EditButton />
         </div>
       </section>
