@@ -8,8 +8,6 @@ import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
 
 const AddInventoryForm = () => {
-  //we need available warehouses for the dropdown menu otherwise it would be thousands of html code because users can create a lot of warehouses
-  //for category, it is hardcoded as if the inventory tablet was empty there would be no way to add a new row of data as users will have empty category
   const navigate = useNavigate();
   const [warehouses, setWarehouses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +15,7 @@ const AddInventoryForm = () => {
   const [inStock, setInStock] = useState(true);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [hasSubmit, setHasSubmit] = useState(false);
-  const [warehouseId, setWarehouseId] = useState("");
+  const [warehouseName, setWarehouseName] = useState("");
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -54,7 +52,7 @@ const AddInventoryForm = () => {
     return <p>No warehouses available</p>;
   }
 
-  const handleChangeWarehouseName = (e) => setWarehouseId(e.target.value);
+  const handleChangeWarehouseName = (e) => setWarehouseName(e.target.value);
   const handleChangeItemName = (e) => setItemName(e.target.value);
   const handleChangeDescription = (e) => setDescription(e.target.value);
   const handleChangeCategory = (e) => setCategory(e.target.value);
@@ -70,7 +68,7 @@ const AddInventoryForm = () => {
 
     let fieldError = false;
 
-    if (warehouseId === "") {
+    if (warehouseName === "") {
       fieldError = true;
     }
 
@@ -93,9 +91,11 @@ const AddInventoryForm = () => {
     }
 
     if (fieldError === false) {
+      const warehouseSelected = warehouses.find((warehouse) => warehouse.warehouse_name === warehouseName);
+
       try {
         const response = await axios.post(`${BASE_URL}/api/inventories`, {
-          warehouse_id: warehouseId,
+          warehouse_id: warehouseSelected.id,
           item_name: itemName,
           description: description,
           category: category,
@@ -108,7 +108,7 @@ const AddInventoryForm = () => {
           navigate("/inventory");
         }, 3000);
       } catch (error) {
-        console.log(error); //modify error message -------------
+        console.error(error); 
         setSubmitSuccess(false);
       }
     } else {
@@ -150,7 +150,7 @@ const AddInventoryForm = () => {
               Item Name
             </label>
             <input
-              className="add-inventory__form-input"
+              className={itemName === "" && hasSubmit ? 'add-inventory__form-input add-inventory__form-input--error' : 'add-inventory__form-input'}
               placeholder="Item Name"
               id="item-name"
               type="text"
@@ -163,7 +163,7 @@ const AddInventoryForm = () => {
               Description
             </label>
             <input
-              className="add-inventory__form-input add-inventory__form-input--description"
+              className={description === "" && hasSubmit ? 'add-inventory__form-input add-inventory__form-input--description add-inventory__form-input--error' : 'add-inventory__form-input add-inventory__form-input--description'}
               placeholder="Please enter a brief item description..."
               id="description"
               type="text"
@@ -176,7 +176,7 @@ const AddInventoryForm = () => {
               Category
             </label>
             <select
-              className="add-inventory__form-input add-inventory__form-input--remove-default-dropdown"
+              className={category === "" && hasSubmit ? 'add-inventory__form-input add-inventory__form-input--remove-default-dropdown add-inventory__form-input--error' : 'add-inventory__form-input add-inventory__form-input--remove-default-dropdown'}
               name="category"
               id="category"
               onChange={handleChangeCategory}
@@ -245,7 +245,7 @@ const AddInventoryForm = () => {
                     Quantity
                   </label>
                   <input
-                    className="add-inventory__form-input"
+                    className={quantityErrorMessage && hasSubmit ? 'add-inventory__form-input add-inventory__form-input--error' : 'add-inventory__form-input'}
                     id="quantity"
                     type="text"
                     name="quantity"
@@ -261,22 +261,22 @@ const AddInventoryForm = () => {
               Warehouse
             </label>
             <select
-              className="add-inventory__form-input add-inventory__form-input--remove-default-dropdown"
+              className={warehouseName === "" && hasSubmit ? 'add-inventory__form-input add-inventory__form-input--remove-default-dropdown add-inventory__form-input--error' : 'add-inventory__form-input add-inventory__form-input--remove-default-dropdown'}
               name="warehouseId"
               id="warehouse-id"
               onChange={handleChangeWarehouseName}
-            >
+            >   
               <option value="">Please select</option>
               {warehouses.map((warehouse) => {
-                return <option>{warehouse.id}</option>;
+                return <option key={warehouse.id}>{warehouse.warehouse_name}</option>;
               })}
             </select>
-            {warehouseId === "" && hasSubmit && <EmptyField />}
+            {warehouseName === "" && hasSubmit && <EmptyField />}
           </div>
         </div>
 
         <div className="add-inventory__action-container">
-          <Link className="add-inventory__cancel-item" to={"/"}>
+          <Link className="add-inventory__cancel-item" to={"/inventory"}>
             Cancel
           </Link>
           <button className="add-inventory__add-item">+ Add Item</button>

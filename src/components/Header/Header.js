@@ -11,7 +11,7 @@ function Header() {
     exact: true,
     strict: false,
   }, pathname);
-  const indexMatch = matchPath( {
+  const indexMatch = matchPath({
     path: "/",
     exact: true,
     strict: false,

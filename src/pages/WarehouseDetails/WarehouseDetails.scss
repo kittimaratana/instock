@@ -10,7 +10,7 @@
   flex-direction: column;
   background-color: $white;
   border-radius: 0.25rem;
-  box-shadow: 0 2px 5px rgba(19, 24, 44, 0.1);
+  box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
   width: 90%;
   position: relative;
   top: -3.375rem;
@@ -42,13 +42,12 @@
       margin-left: 5rem;
       margin-right: 3rem;
     }
-    // @include tablet {
-    //   margin-left: 7rem;
-    // }
+
     @include desktop {
       margin-left: 10rem;
     }
   }
+
   &__header {
     display: flex;
     justify-content: space-between;

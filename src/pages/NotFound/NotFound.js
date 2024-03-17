@@ -1,5 +1,4 @@
 import React from 'react';
-import './NotFound.scss';
 import { useEffect } from 'react';
 
 export const NotFound = () => {

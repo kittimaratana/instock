@@ -4,8 +4,8 @@ import "./EditWarehouse.scss"
 export const EditWarehousePage = () => {
   return (
     <div className="edit-warehouse__center-wrap">
-      <EditWarehouse/>
+      <EditWarehouse />
     </div>
   );
-  }
-  
+}
+

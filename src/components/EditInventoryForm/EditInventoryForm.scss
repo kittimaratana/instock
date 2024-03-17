@@ -46,7 +46,7 @@
   }
 
   &__details-container {
-    border-bottom: 1px;
+    border-bottom: 0.0625rem;
     width: 100%;
 
     @include tablet {
@@ -59,7 +59,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px;
+    border-bottom: 0.0625rem;
     padding: 1.5rem;
 
     @include tablet {
@@ -96,11 +96,23 @@
     @include tablet {
       margin-top: 0.7rem;
     }
+
+    @include desktop {
+      width: 7.625rem;
+    }
   }
 
   &__form-input {
     @include body-medium;
     @include form-field;
+
+    &--error {
+      border:0.0625rem solid red;
+    }
+    
+    &:focus{
+      border: 0.1rem solid $blue;
+    }
 
     &--status {
       width: auto;
@@ -178,6 +190,7 @@
   }
 
   &__edit-item {
+    cursor: pointer;
     @include button;
     @include body-medium;
     width: 48%;

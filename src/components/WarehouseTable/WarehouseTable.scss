@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-
   &__divider1 {
     width: 100%;
     border: 0.0625rem solid $cloud;
@@ -16,15 +15,12 @@
       display: none;
     }
   }
-
   &__divider2 {
     border: 0.0625rem solid $cloud;
     width: 100%;
   }
-
   &__label-container {
     display: none;
-
     @include tablet {
       @include table-header;
       display: flex;
@@ -37,43 +33,35 @@
       align-items: center;
       gap: 1rem;
     }
-
     @include desktop {
       padding-left: 3rem;
       padding-right: 3rem;
     }
   }
-
   &__sort {
     height: 1rem;
   }
-
   &__label-warehouse {
     width: 22%;
     display: flex;
     align-items: center;
   }
-
   &__label-address {
     width: 20%;
     display: flex;
     align-items: center;
-
     @include desktop {
       width: 29%;
     }
   }
-
   &__label-name {
     width: 18%;
     display: flex;
     align-items: center;
-
     @include desktop {
       width: 18%;
     }
   }
-
   &__label-information {
     width: 29.5%;
     display: flex;
@@ -83,7 +71,6 @@
       width: 24%;
     }
   }
-
   &__label-action {
     width: 10.5%;
     display: flex;
@@ -95,7 +82,6 @@
     }
   }
 }
-
 .warehouse-item {
   &:hover {
     background-color: rgba(46, 102, 229, 0.07);

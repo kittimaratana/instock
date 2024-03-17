@@ -58,9 +58,8 @@ export function InventoriesList({ inventories, withWarehouseName, invokeDeleteMo
           </div>
         </div>
         <h4
-          className={`inventories-list__labels-item inventories-list__labels-item-actions ${
-            withWarehouseName ? "margin-left" : ""
-          }`}
+          className={`inventories-list__labels-item inventories-list__labels-item-actions ${withWarehouseName ? "margin-left" : ""
+            }`}
         >
           ACTIONS
         </h4>
@@ -128,12 +127,13 @@ export function InventoriesListItem({
           </div>
         </div>
         <div
-          className={`inventories-list__item-buttons ${
-            withWarehouseName ? "margin-left" : ""
-          }`}
+          className={`inventories-list__item-buttons ${withWarehouseName ? "margin-left" : ""
+            }`}
         >
-          <DeleteButton invokeDeleteModal={invokeDeleteModal}/>
-          <EditButton />
+          <DeleteButton invokeDeleteModal={invokeDeleteModal} />
+          <Link to={`/inventory/${id}/edit`} >
+            <EditButton />
+          </Link>
         </div>
       </section>
       <hr className="inventories-list__divider" />

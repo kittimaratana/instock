@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
+import { WarehouseDetails } from "../../pages/WarehouseDetails/WarehouseDetails";
 
 const CreateNewWarehouse = () => {
     const [warehouse_name, setWarehouse_name] = useState('');
@@ -26,9 +27,7 @@ const CreateNewWarehouse = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmit(true);
-        // Convert the phone number to the desired format
         const formattedPhone = formatPhoneNumber(contact_phone);
-        // Validation checks
         if (
             !warehouse_name ||
             !address ||
@@ -41,7 +40,6 @@ const CreateNewWarehouse = () => {
             !contact_email ||
             !validateEmail(contact_email)
         ) {
-            // If any field is empty or email/phone is not valid, return without submitting
             console.error('Please fill out all fields and provide a valid email address and phone number.');
             return;
         }
@@ -60,7 +58,6 @@ const CreateNewWarehouse = () => {
         setIsPending(true);
 
         try {
-            // Post the newWarehouse object to the DB via API call
             const response = await fetch(`${BASE_URL}/api/warehouses`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -69,15 +66,12 @@ const CreateNewWarehouse = () => {
             );
 
             if (response.ok) {
-                // Handle successful add
-                console.log(response.statusText);
                 setSubmitSuccess(true);
                 setTimeout(() => {
                     navigate("/");
                 }, 3000)
 
             } else {
-                // Handle error response from API
                 console.error('Failed to add warehouse:', response.statusText);
                 setSubmitSuccess(false)
             }
@@ -87,15 +81,12 @@ const CreateNewWarehouse = () => {
         }
     };
 
-    // Function to validate email format
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
-    // Function to validate phone number format
     const validatePhone = (phone) => {
-        // Regular expression for validating phone number format
         const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/;
         return phoneRegex.test(phone);
     };
@@ -109,21 +100,15 @@ const CreateNewWarehouse = () => {
         let formattedNumber = '+1 (' + numbers.substring(0, 3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6, 10);
 
         return formattedNumber;
-
     };
 
     let phoneErrorMessage = null;
 
     const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/
     if (contact_phone === "" || !phoneRegex.test(formatPhoneNumber(contact_phone))) {
-        
+
         phoneErrorMessage = <EmptyField message="Please provide valid number" />;
-    } 
-
-
-
-
-
+    }
 
     return (
         <section className="add-warehouse">
@@ -141,7 +126,7 @@ const CreateNewWarehouse = () => {
                         <h2>Warehouse Details</h2>
                         <label className="add-warehouse__form-label">Warehouse Name:<br /></label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={warehouse_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Warehouse Name"
                             type="text"
 
@@ -153,7 +138,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Address:  </label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={address === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Street address"
                             type="text"
 
@@ -165,7 +150,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">City:</label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={city === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="City"
                             type="text"
 
@@ -177,7 +162,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Country: </label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={country === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Country"
                             type="text"
 
@@ -195,7 +180,7 @@ const CreateNewWarehouse = () => {
                         <h2>Contact Details</h2>
                         <label className="add-warehouse__form-label" >Contact Name: </label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={contact_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Contact Name"
                             type="text"
 
@@ -207,7 +192,7 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Contact Position: </label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={contact_position === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Contact Position"
                             type="text"
 
@@ -219,27 +204,27 @@ const CreateNewWarehouse = () => {
 
                         <label className="add-warehouse__form-label">Phone Number:</label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={phoneErrorMessage && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Phone Number"
                             type="text"
 
                             value={contact_phone}
                             onChange={(e) => setContact_phone(e.target.value)}
                         />
-                        {hasSubmit && phoneErrorMessage }
-                        
+                        {hasSubmit && phoneErrorMessage}
+
 
 
                         <label className="add-warehouse__form-label">Email:</label>
                         <input
-                            className="add-warehouse__form-input"
+                            className={!validateEmail(contact_email) && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="Email"
                             type="text"
 
                             value={contact_email}
                             onChange={(e) => setContact_email(e.target.value)}
                         />
-                        {contact_email === "" && hasSubmit && <EmptyField />}
+                        {!validateEmail(contact_email) && hasSubmit && <EmptyField />}
 
 
 

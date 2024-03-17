@@ -17,10 +17,10 @@ a {
 main {
   background-color: $lightgray;
   @include tablet {
-    min-height: 35rem;
+    min-height: 52rem;
   }
   @include desktop {
-    min-height: 35rem;
+    min-height: 50rem;
   }
 }
 

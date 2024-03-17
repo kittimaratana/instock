@@ -1,6 +1,6 @@
 import "./WarehouseDetails.scss";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
@@ -20,21 +20,21 @@ export const WarehouseDetails = () => {
     fetchWarehouseData(warehouseId);
   }, [warehouseId]);
   const fetchWarehouseData = async (warehouseId) => {
-      try {
-        const getWarehouseByIdResponse = await axios.get(
-          `${BASE_URL}/api/warehouses/${warehouseId}`
-        );
-        const getInventoriesResponse = await axios.get(
-          `${BASE_URL}/api/warehouses/${warehouseId}/inventories`
-        );
-        setIsLoading(false);
-        setWarehouse({ ...getWarehouseByIdResponse.data });
-        setInventories([...getInventoriesResponse.data]);
-      } catch (error) {
-        setHasError(true);
-        setIsLoading(false);
-        console.error(error);
-      }
+    try {
+      const getWarehouseByIdResponse = await axios.get(
+        `${BASE_URL}/api/warehouses/${warehouseId}`
+      );
+      const getInventoriesResponse = await axios.get(
+        `${BASE_URL}/api/warehouses/${warehouseId}/inventories`
+      );
+      setIsLoading(false);
+      setWarehouse({ ...getWarehouseByIdResponse.data });
+      setInventories([...getInventoriesResponse.data]);
+    } catch (error) {
+      setHasError(true);
+      setIsLoading(false);
+      console.error(error);
+    }
   };
   const invokeDeleteModal = (id, name) => {
     setDeleteInventoryItem({ id: id, name: name });
@@ -69,12 +69,15 @@ export const WarehouseDetails = () => {
             {warehouse.warehouse_name}
           </div>
         </div>
-        <div className="warehouse-details__header-edit">
+        
+        <Link to={`/warehouse/${warehouseId}/edit`}  className="warehouse-details__header-edit">
           <CircleEdit />
-        </div>
-        <div className="warehouse-details__header-edit-tablet">
+        </Link>
+
+        <Link to={`/warehouse/${warehouseId}/edit`}  className="warehouse-details__header-edit-tablet">
           <CircleEdit />
-        </div>
+        </Link>
+
       </section>
       <hr className="warehouse-details__divider1" />
       <section className="warehouse-details__container">
@@ -109,11 +112,11 @@ export const WarehouseDetails = () => {
         </div>
       </section>
       <hr className="warehouse-details__divider2" />
-   
-      <InventoriesList 
-      inventories={inventories} 
-      withWarehouseName={false} 
-      invokeDeleteModal={invokeDeleteModal} />
+
+      <InventoriesList
+        inventories={inventories}
+        withWarehouseName={false}
+        invokeDeleteModal={invokeDeleteModal} />
       {deleteInventoryItem && (
         <DeleteModal
           header={`Delete ${deleteInventoryItem.name} inventory item?`}

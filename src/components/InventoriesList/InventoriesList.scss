@@ -94,6 +94,7 @@
 
   &__item {
     &-buttons {
+      cursor: pointer;
       display: flex;
       width: 100%;
       justify-content: space-between;

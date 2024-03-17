@@ -28,17 +28,6 @@ const EditWarehouse = () => {
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const navigate = useNavigate();
 
-    // const [warehouseName, setWarehouseName] = useState('');
-    // const [warehouseCity, setWarehouseCity] = useState('');
-    // const [warehouseAddresss, setWarehouseAddress] = useState('');
-    // const [warehouseCountry, setwarehouseCountry] = useState('');
-    // const [warehouseContactName, setwarehouseContactName] = useState('');
-    // const [warehouseContactPosition, setWarehouseContactPosition] = useState('');
-    // const [warehouseContactPhone, setwarehouseContactPhone] = useState('');
-    // const [warehouseContactEmail, setWarehouseContactEmail] = useState('');
-
-    console.log(warehouseId);
-
 
     useEffect(() => {
         const fetchWarehouseData = async () => {
@@ -48,7 +37,6 @@ const EditWarehouse = () => {
                     `${BASE_URL}/api/warehouses/${warehouseId}`
 
                 );
-                console.log(wareHouseResponse)
                 setWarehouse_name(wareHouseResponse.data.warehouse_name);
                 setCity(wareHouseResponse.data.city);
                 setAddress(wareHouseResponse.data.address);
@@ -78,11 +66,6 @@ const EditWarehouse = () => {
     if (isLoading) {
         return <p>Is Loading...</p>;
     }
-
-
-
-
-
 
 
     const handleSubmit = async (e) => {
@@ -132,7 +115,6 @@ const EditWarehouse = () => {
 
             if (response.ok) {
                 // Handle successful add
-                console.log(response.statusText);
                 setSubmitSuccess(true);
                 setTimeout(() => {
                     navigate("/");
@@ -182,16 +164,11 @@ const EditWarehouse = () => {
         phoneErrorMessage = <EmptyField message="Please provide valid number" />;
     }
 
-
-
-
-
-
     return (
         <section className="edit-warehouse">
             <section className="edit-warehouse__header">
                 <ArrowBack />
-                <h1 className="edit-warehouse__header-name">Add New Warehouse</h1>
+                <h1 className="edit-warehouse__header-name">Edit Warehouse</h1>
             </section>
 
             <hr className="warehouse__divider" />
@@ -203,7 +180,7 @@ const EditWarehouse = () => {
                         <h2>Warehouse Details</h2>
                         <label className="edit-warehouse__form-label">Warehouse Name:<br /></label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={warehouse_name === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Warehouse Name"
                             type="text"
 
@@ -215,7 +192,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">Address:  </label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={address === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Street editress"
                             type="text"
 
@@ -227,7 +204,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">City:</label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={city === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="City"
                             type="text"
 
@@ -239,7 +216,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">Country: </label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={country === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Country"
                             type="text"
 
@@ -257,7 +234,7 @@ const EditWarehouse = () => {
                         <h2>Contact Details</h2>
                         <label className="edit-warehouse__form-label" >Contact Name: </label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={contact_name === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Contact Name"
                             type="text"
 
@@ -269,7 +246,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">Contact Position: </label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={contact_position === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Contact Position"
                             type="text"
 
@@ -281,7 +258,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">Phone Number:</label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={contact_phone === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Phone Number"
                             type="text"
 
@@ -294,7 +271,7 @@ const EditWarehouse = () => {
 
                         <label className="edit-warehouse__form-label">Email:</label>
                         <input
-                            className="edit-warehouse__form-input"
+                            className={contact_email === "" && hasSubmit ? 'edit-warehouse__form-input edit-warehouse__form-input--error' : 'edit-warehouse__form-input'}
                             placeholder="Email"
                             type="text"
 
@@ -302,8 +279,6 @@ const EditWarehouse = () => {
                             onChange={(e) => setContact_email(e.target.value)}
                         />
                         {contact_email === "" && hasSubmit && <EmptyField />}
-
-
 
                     </div>
 
@@ -316,13 +291,11 @@ const EditWarehouse = () => {
                         <a href="/"> Cancel </a>
                     </div>
 
-                    {!isPending && <button className="edit-warehouse__add-button">+ Add Warehouse</button>}
+                    {!isPending && <button className="edit-warehouse__add-button">+ Update Warehouse</button>}
                 </div>
                 {submitSuccess && (
-                    <div className="edit-warehouse__success-message">Successfully added new warehouse. Redirecting you to the main page...</div>
+                    <div className="edit-warehouse__success-message">Successfully updated warehouse. Redirecting you to the main page...</div>
                 )}
-
-
 
             </form>
         </section>
