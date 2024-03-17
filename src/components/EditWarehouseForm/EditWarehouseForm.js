@@ -7,8 +7,11 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
 
-const EditWarehouseForm = () => {
-    const { warehouse_Id } = useParams();
+
+const EditWarehouse = () => {
+    const { warehouseId } = useParams();
+
+
     const [warehouse_name, setWarehouse_name] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -18,16 +21,75 @@ const EditWarehouseForm = () => {
     const [contact_phone, setContact_phone] = useState('');
     const [contact_email, setContact_email] = useState('');
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [hasError, setHasError] = useState(false);
+    const [hasSubmit, setHasSubmit] = useState(false);
     const [isPending, setIsPending] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const navigate = useNavigate();
 
+    // const [warehouseName, setWarehouseName] = useState('');
+    // const [warehouseCity, setWarehouseCity] = useState('');
+    // const [warehouseAddresss, setWarehouseAddress] = useState('');
+    // const [warehouseCountry, setwarehouseCountry] = useState('');
+    // const [warehouseContactName, setwarehouseContactName] = useState('');
+    // const [warehouseContactPosition, setWarehouseContactPosition] = useState('');
+    // const [warehouseContactPhone, setwarehouseContactPhone] = useState('');
+    // const [warehouseContactEmail, setWarehouseContactEmail] = useState('');
+
+    console.log(warehouseId);
+
+
+    useEffect(() => {
+        const fetchWarehouseData = async () => {
+            try {
+
+                const wareHouseResponse = await axios.get(
+                    `${BASE_URL}/api/warehouses/${warehouseId}`
+
+                );
+                console.log(wareHouseResponse)
+                setWarehouse_name(wareHouseResponse.data.warehouse_name);
+                setCity(wareHouseResponse.data.city);
+                setAddress(wareHouseResponse.data.address);
+                setCountry(wareHouseResponse.data.country);
+                setContact_name(wareHouseResponse.data.contact_name);
+                setContact_position(wareHouseResponse.data.contact_position);
+                setContact_phone(wareHouseResponse.data.contact_phone);
+                setContact_email(wareHouseResponse.data.contact_email);
+
+                setIsLoading(false)
+
+
+            } catch (error) {
+                setIsLoading(false);
+                setHasError(true);
+            }
+        };
+        fetchWarehouseData();
+    }, []);
+
+    if (hasError) {
+        return (
+            <p>Unable to access warehouses right now. Please try again later.</p>
+        );
+    }
+
+    if (isLoading) {
+        return <p>Is Loading...</p>;
+    }
+
+
+
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-         // Convert the phone number to the desired format
-         const formattedPhone = formatPhoneNumber(contact_phone);
+        setHasSubmit(true);
+        // Convert the phone number to the desired format
+        const formattedPhone = formatPhoneNumber(contact_phone);
         // Validation checks
         if (
             !warehouse_name ||
@@ -61,12 +123,12 @@ const EditWarehouseForm = () => {
 
         try {
             // Post the newWarehouse object to the DB via API call
-            const response = await fetch(`${BASE_URL}/api/warehouses`, {
-                method: "POST",
+            const response = await fetch(`${BASE_URL}/api/warehouses/${warehouseId}`, {
+                method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newWarehouse)
             }).then(setIsPending(false),
-                   );
+            );
 
             if (response.ok) {
                 // Handle successful add
@@ -112,118 +174,135 @@ const EditWarehouseForm = () => {
 
     };
 
+    let phoneErrorMessage = null;
+
+    const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/
+    if (contact_phone === "" || !phoneRegex.test(formatPhoneNumber(contact_phone))) {
+
+        phoneErrorMessage = <EmptyField message="Please provide valid number" />;
+    }
+
 
 
 
 
 
     return (
-        <section className="add-warehouse">
-            <section className="add-warehouse__header">
+        <section className="edit-warehouse">
+            <section className="edit-warehouse__header">
                 <ArrowBack />
-                <h1 className="add-warehouse__header-name">Add New Warehouse</h1>
+                <h1 className="edit-warehouse__header-name">Add New Warehouse</h1>
             </section>
 
             <hr className="warehouse__divider" />
 
             <form onSubmit={handleSubmit}>
 
-                <div className="add-warehouse__details-container">
-                    <div className="add-warehouse__details">
+                <div className="edit-warehouse__details-container">
+                    <div className="edit-warehouse__details">
                         <h2>Warehouse Details</h2>
-                        <label className="add-warehouse__form-label">Warehouse Name:<br /></label>
+                        <label className="edit-warehouse__form-label">Warehouse Name:<br /></label>
                         <input
-                            className="add-warehouse__form-input"
+                            className="edit-warehouse__form-input"
                             placeholder="Warehouse Name"
                             type="text"
-                            required
+
                             value={warehouse_name}
                             onChange={(e) => setWarehouse_name(e.target.value)}
                         />
+                        {warehouse_name === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Address:  </label>
+                        <label className="edit-warehouse__form-label">Address:  </label>
                         <input
-                            className="add-warehouse__form-input"
-                            placeholder="Street address"
+                            className="edit-warehouse__form-input"
+                            placeholder="Street editress"
                             type="text"
-                            required
+
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
+                        {address === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">City:</label>
+                        <label className="edit-warehouse__form-label">City:</label>
                         <input
-                            className="add-warehouse__form-input"
+                            className="edit-warehouse__form-input"
                             placeholder="City"
                             type="text"
-                            required
+
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
+                        {city === "" && hasSubmit && <EmptyField />}
 
 
-                        <label className="add-warehouse__form-label">Country: </label>
+                        <label className="edit-warehouse__form-label">Country: </label>
                         <input
-                            className="add-warehouse__form-input"
+                            className="edit-warehouse__form-input"
                             placeholder="Country"
                             type="text"
-                            required
+
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
+                        {country === "" && hasSubmit && <EmptyField />}
 
                     </div>
 
-                    <hr className="add-warehosue__divider add-warehosue__divider--between-components" />
+                    <hr className="edit-warehouse__divider edit-warehouse__divider--between-components" />
 
-                    <div className="add-warehouse__details">
+                    <div className="edit-warehouse__details">
 
                         <h2>Contact Details</h2>
-                        <label className="add-warehouse__form-label" >Contact Name:
-                            <input
-                                className="add-warehouse__form-input"
-                                placeholder="Contact Name"
-                                type="text"
-                                required
-                                value={contact_name}
-                                onChange={(e) => setContact_name(e.target.value)}
-                            />
-                        </label>
+                        <label className="edit-warehouse__form-label" >Contact Name: </label>
+                        <input
+                            className="edit-warehouse__form-input"
+                            placeholder="Contact Name"
+                            type="text"
 
-                        <label className="add-warehouse__form-label">Contact Position:
-                            <input
-                                className="add-warehouse__form-input"
-                                placeholder="Contact Position"
-                                type="text"
-                                required
-                                value={contact_position}
-                                onChange={(e) => setContact_position(e.target.value)}
-                            />
-                        </label>
+                            value={contact_name}
+                            onChange={(e) => setContact_name(e.target.value)}
+                        />
+                        {contact_name === "" && hasSubmit && <EmptyField />}
 
-                        <label className="add-warehouse__form-label">Phone Number:
-                            <input
-                                className="add-warehouse__form-input"
-                                placeholder="Phone Number"
-                                type="text"
-                                required
-                                value={contact_phone}
-                                onChange={(e) => setContact_phone(e.target.value)}
-                            />
-                        </label>
 
-                        <label className="add-warehouse__form-label">Email:
-                            <input
-                                className="add-warehouse__form-input"
-                                placeholder="Email"
-                                type="text"
-                                required
-                                value={contact_email}
-                                onChange={(e) => setContact_email(e.target.value)}
-                            />
-                        </label>
+                        <label className="edit-warehouse__form-label">Contact Position: </label>
+                        <input
+                            className="edit-warehouse__form-input"
+                            placeholder="Contact Position"
+                            type="text"
+
+                            value={contact_position}
+                            onChange={(e) => setContact_position(e.target.value)}
+                        />
+                        {contact_position === "" && hasSubmit && <EmptyField />}
+
+
+                        <label className="edit-warehouse__form-label">Phone Number:</label>
+                        <input
+                            className="edit-warehouse__form-input"
+                            placeholder="Phone Number"
+                            type="text"
+
+                            value={contact_phone}
+                            onChange={(e) => setContact_phone(e.target.value)}
+                        />
+                        {hasSubmit && phoneErrorMessage}
+
+
+
+                        <label className="edit-warehouse__form-label">Email:</label>
+                        <input
+                            className="edit-warehouse__form-input"
+                            placeholder="Email"
+                            type="text"
+
+                            value={contact_email}
+                            onChange={(e) => setContact_email(e.target.value)}
+                        />
+                        {contact_email === "" && hasSubmit && <EmptyField />}
+
 
 
                     </div>
@@ -232,18 +311,18 @@ const EditWarehouseForm = () => {
 
 
 
-                <div className="add-warehouse__buttons-group">
-                    <div className="add-warehouse__cancel-button">
+                <div className="edit-warehouse__buttons-group">
+                    <div className="edit-warehouse__cancel-button">
                         <a href="/"> Cancel </a>
                     </div>
 
-                    {!isPending && <button className="add-warehouse__add-button">+ Add Warehouse</button>}
-                    {isPending && <a><button disabled className="add-warehouse__add-button">Addding Warehouse...</button></a>}
-                    {submitSuccess && (
-                        <div className="add-warehouse__success-message">Successfully added new warehouse. Redirecting you to the main page...</div>
-                    )}
-
+                    {!isPending && <button className="edit-warehouse__add-button">+ Add Warehouse</button>}
                 </div>
+                {submitSuccess && (
+                    <div className="edit-warehouse__success-message">Successfully added new warehouse. Redirecting you to the main page...</div>
+                )}
+
+
 
             </form>
         </section>
@@ -251,4 +330,4 @@ const EditWarehouseForm = () => {
 
 }
 
-export default EditWarehouseForm;
+export default EditWarehouse;
