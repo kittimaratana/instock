@@ -1,7 +1,6 @@
 import "./Status.scss";
 
 function Status({ text }) {
-  console.log(typeof text);
   const lowerCasedText = typeof text === "string" ? text.toLowerCase() : "";
 
   return (

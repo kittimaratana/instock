@@ -6,16 +6,20 @@ import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
 import { BASE_URL } from "../../utils/constant-variables";
 import { InventoriesList } from "../../components/InventoriesList/InventoriesList";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 export const WarehouseDetails = () => {
   const [warehouse, setWarehouse] = useState({});
   const [inventories, setInventories] = useState([]);
+  const [deleteInventoryItem, setDeleteInventoryItem] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const { warehouseId } = useParams();
 
   useEffect(() => {
-    const fetchWarehouseData = async () => {
+    fetchWarehouseData(warehouseId);
+  }, [warehouseId]);
+  const fetchWarehouseData = async (warehouseId) => {
       try {
         const getWarehouseByIdResponse = await axios.get(
           `${BASE_URL}/api/warehouses/${warehouseId}`
@@ -31,9 +35,20 @@ export const WarehouseDetails = () => {
         setIsLoading(false);
         console.error(error);
       }
-    };
-    fetchWarehouseData();
-  }, [warehouseId]);
+  };
+  const invokeDeleteModal = (id, name) => {
+    setDeleteInventoryItem({ id: id, name: name });
+  };
+  const deleteSelectedInventoryItem = async () => {
+    try {
+      await axios.delete(`${BASE_URL}/api/inventories/${deleteInventoryItem.id}`);
+      fetchWarehouseData(warehouseId);
+      setDeleteInventoryItem(null);
+    } catch (error) {
+      setHasError(true);
+      console.error(error);
+    }
+  };
 
   if (hasError) {
     return (
@@ -95,7 +110,18 @@ export const WarehouseDetails = () => {
       </section>
       <hr className="warehouse-details__divider2" />
    
-      <InventoriesList inventories={inventories} withWarehouseName={false} />
+      <InventoriesList 
+      inventories={inventories} 
+      withWarehouseName={false} 
+      invokeDeleteModal={invokeDeleteModal} />
+      {deleteInventoryItem && (
+        <DeleteModal
+          header={`Delete ${deleteInventoryItem.name} inventory item?`}
+          body={`Please confirm that you’d like to delete the ${deleteInventoryItem.name} from the inventory list. You won’t be able to undo this action.`}
+          clickClose={() => setDeleteInventoryItem(null)}
+          clickDelete={deleteSelectedInventoryItem}
+        />
+      )}
     </div>
   );
 };
