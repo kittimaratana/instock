@@ -15,6 +15,8 @@ function WareHouseItem({
   contactEmail,
   invokeDeleteModal
 }) {
+
+  //display warehouse item, includes links and deletion/deits buttons
   return (
     <div className="warehouse-item">
       <div className="warehouse-item--mobile">
@@ -45,7 +47,9 @@ function WareHouseItem({
         </div>
         <div className="warehouse-item__wrap-section3">
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
+          <Link  to={`/warehouse/${warehouseId}/edit`}>
           <EditButton />
+          </Link>
         </div>
       </div>
       <div className="warehouse-item--tablet">
@@ -59,7 +63,7 @@ function WareHouseItem({
         </p>
         <div className="warehouse-item__action">
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
-          <Link to={`/warehouse/${warehouseId}/edit`}>
+          <Link  className="warehouse-item__edit-button" to={`/warehouse/${warehouseId}/edit`}>
             <EditButton />
           </Link>
         </div>

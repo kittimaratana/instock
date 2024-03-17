@@ -10,6 +10,10 @@
   flex-direction: column;
   width: 100%;
 
+  &__edit-button{
+    padding-top: 0.35rem;
+  }
+
   &__item {
     &:hover {
       background-color: rgba(46, 102, 229, 0.07);
@@ -114,7 +118,9 @@
     padding-bottom: $mobile-padding;
 
     @include tablet {
+      display: flex;
       padding-bottom: 0;
+      align-items: center;
     }
 
     &-label {
@@ -155,4 +161,7 @@
   @include tablet {
     margin-left: 1rem;
   }
+
+
+
 }

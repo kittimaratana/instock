@@ -5,6 +5,8 @@ import sort from "../../assets/images/sort-24px.svg";
 import AttributeLink from "../AttributeLink/AttributeLink";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import EditButton from "../EditButton/EditButton";
+
+// for displaying a list of inventories
 export function InventoriesList({ inventories, withWarehouseName, invokeDeleteModal }) {
   return (
     <section className="inventories-list__container">
@@ -76,6 +78,7 @@ export function InventoriesList({ inventories, withWarehouseName, invokeDeleteMo
   );
 }
 
+// for displaying individual inventory items
 export function InventoriesListItem({
   category,
   id,
@@ -131,7 +134,7 @@ export function InventoriesListItem({
             }`}
         >
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
-          <Link to={`/inventory/${id}/edit`} >
+          <Link className="inventories-list__edit-button" to={`/inventory/${id}/edit`} >
             <EditButton />
           </Link>
         </div>

@@ -14,6 +14,7 @@ function WarehouseTable() {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+
     // Fetching warehouses on page load
     fetchWarehouse();
   }, []);
@@ -29,6 +30,7 @@ function WarehouseTable() {
     }
   };
 
+  // Setting required properties
   const invokeDeleteModal = (id, name) => {
     setDeleteItem({ id: id, name: name });
   };
@@ -36,6 +38,7 @@ function WarehouseTable() {
   const deleteSelectedItem = async () => {
     try {
       await axios.delete(`${BASE_URL}/api/warehouses/${deleteItem.id}`);
+
       // Fetching updated warehouses on delete
       fetchWarehouse();
       setDeleteItem(null);
@@ -60,6 +63,7 @@ function WarehouseTable() {
 
   const dividerSkipId = warehouses[warehouses.length - 1].id;
 
+  //displays warehouse header and calls WareHouseItem to pull items
   return (
     <section className="warehouse">
       <SearchAndAddButtonHeader

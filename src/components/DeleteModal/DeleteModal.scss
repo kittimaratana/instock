@@ -1,6 +1,7 @@
 @use "../../styles/partials/_colors" as *;
 @use "../../styles/partials/mixins" as *;
 
+//styling for deleting warehouse/inventory
 .delete-modal {
   position: fixed;
   z-index: 1;
@@ -26,6 +27,10 @@
         margin: 12.188rem auto 0 auto;
     }
   }
+  &__close-icon{
+    cursor: pointer;
+  }
+
   &__content {
     @include tablet {
         padding: 0 2rem;

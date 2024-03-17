@@ -8,8 +8,11 @@ import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
 
 const EditInventoryForm = () => {
+  // useParams to get inventoryId
   const { inventoryId } = useParams();
   const navigate = useNavigate();
+
+  // define all useState
   const [warehouses, setWarehouses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -32,6 +35,7 @@ const EditInventoryForm = () => {
     return -1;
   };
 
+  // GET the data to populate the inventory form
   useEffect(() => {
     const fetchInventoryData = async () => {
       try {
@@ -60,6 +64,7 @@ const EditInventoryForm = () => {
     fetchInventoryData();
   }, []);
 
+ //if fetching data has not updated yet return progress or error statements
   if (hasError) {
     return (
       <p>Unable to access warehouses right now. Please try again later.</p>
@@ -88,7 +93,8 @@ const EditInventoryForm = () => {
     e.preventDefault();
 
     let fieldError = false;
-
+        
+    //checks to see if the fields are empty or does not meet conditions
     if (warehouseName === "") {
       fieldError = true;
     }
@@ -135,6 +141,7 @@ const EditInventoryForm = () => {
     }
   };
 
+  // check the validation for all possible input for quantity
   let quantityErrorMessage = null;
   if (quantity === "" || !isTypeOfQuantityInt) {
     quantityErrorMessage = <EmptyField message="Please insert valid number" />;
@@ -291,6 +298,7 @@ const EditInventoryForm = () => {
               value={warehouseName}
               onChange={handleChangeWarehouseName}
             >
+              {/* remove duplication fot dropdown options */}
               <option key={warehouseName}>{warehouseName}</option>
               {warehouses
                 .filter(
@@ -315,7 +323,7 @@ const EditInventoryForm = () => {
         </div>
         {submitSuccess && (
           <div className="add-inventory__success-message">
-            Successfully edited new inventory. Redirecting you to view{" "}
+            Successfully edited new inventory. Redirecting you to view {" "}
             {itemName}!
           </div>
         )}

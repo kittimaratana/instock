@@ -4,6 +4,7 @@
 @use "../../styles/partials/_global" as *;
 @use "../../styles/partials/_mixins" as *;
 
+//styling for search bar
 .search {
   @include body-medium;
   padding-bottom: 1rem;

@@ -1,5 +1,6 @@
 import "./Footer.scss";
 
+// For displaying footer
 const Footer = () => {
   return (
     <div className="footer">

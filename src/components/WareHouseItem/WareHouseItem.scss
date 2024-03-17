@@ -4,6 +4,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_colors" as *;
 
+//one container of warehouse item styling to ensure it is responsive to different devices
 .warehouse-item {
   width: 100%;
   &--mobile {
@@ -48,6 +49,10 @@
     justify-content: space-between;
     width: 100%;
   }
+ &__edit-button{
+  padding-top: 0.35rem;
+ }
+  
   &__icon-wrap {
     display: flex;
     justify-content: space-between;

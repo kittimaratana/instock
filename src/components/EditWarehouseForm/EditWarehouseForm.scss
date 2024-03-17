@@ -80,7 +80,7 @@
       width: 100%;
       padding: 0 2rem;
       border-bottom: none;
-      
+
     }
 
   }
@@ -100,10 +100,12 @@
     @include body-medium;
     @include form-field;
 
+    //border style for error state  
     &--error {
       border: 0.0625rem solid red;
     }
 
+    //style for active input field
     &:focus {
       border: 0.1rem solid $blue;
     }
@@ -114,14 +116,16 @@
     }
   }
 
+  //button group at the bottom of the main body
   &__buttons-group {
     display: flex;
     flex-direction: row;
-    padding: 2rem 2rem;
+    padding: 1rem 1.5rem;
     gap: 1rem;
     justify-content: space-around;
     background-color: $lightgray;
 
+    //when on tablet, set justify-content to flex-end 
     @include tablet {
       border-top: 0.0625rem solid $cloud;
       justify-content: flex-end;
@@ -129,6 +133,7 @@
 
   }
 
+  // cancel button styling
   &__cancel-button {
     @include button;
     color: $black;
@@ -139,6 +144,7 @@
       color: inherit;
     }
 
+    //add 1rem padding on both sides of the text for table and desktop 
     @include tablet {
       width: auto;
       padding-left: 1rem;
@@ -148,15 +154,18 @@
 
   }
 
+  //hover state for cancel button
   &__cancel-button:hover {
     border-color: $blue;
+    color: $blue;
   }
 
-
+  //add button styling
   &__add-button {
 
     @include button;
 
+    //add 1rem padding on both sides of the text for table and desktop 
     @include tablet {
       width: auto;
       padding-left: 1rem;

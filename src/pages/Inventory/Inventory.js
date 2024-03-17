@@ -15,7 +15,7 @@ export const Inventory = () => {
   useEffect(() => {
     fetchInventories();
   }, []);
-
+  // Fetching data for inventories
   const fetchInventories = async () => {
     try {
       const getInventoriesResponse = await axios.get(
@@ -29,11 +29,11 @@ export const Inventory = () => {
       console.error(error);
     }
   };
-
+  // Setting required parameters for delete inventory item
   const invokeDeleteModal = (id, name) => {
     setDeleteItem({ id: id, name: name });
   };
-
+  // Deleting selected invenroty item from the inventory list and reload the page
   const deleteSelectedItem = async () => {
     try {
       await axios.delete(`${BASE_URL}/api/inventories/${deleteItem.id}`);
