@@ -22,7 +22,6 @@ function InventoryDetailsTable({ inventoryInfo }) {
         </div>
       </div>
       <hr className="inventoryDetailsTable__header-divider1" />
-
       <div className="inventoryDetailsTable__body">
         <div className="inventoryDetailsTable__section">
           <div className="inventoryDetailsTable__item">
@@ -31,7 +30,6 @@ function InventoryDetailsTable({ inventoryInfo }) {
               {inventoryInfo.description}
             </p>
           </div>
-
           <div className="inventoryDetailsTable__item">
             <h4 className="inventoryDetailsTable__label">category:</h4>
             <p className="inventoryDetailsTable__value">
@@ -39,9 +37,7 @@ function InventoryDetailsTable({ inventoryInfo }) {
             </p>
           </div>
         </div>
-
         <hr className="inventoryDetailsTable__section-devider" />
-
         <div className="inventoryDetailsTable__section">
           <div className="inventoryDetailsTable__section-row">
             <div className="inventoryDetailsTable__item">

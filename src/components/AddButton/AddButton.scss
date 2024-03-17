@@ -16,6 +16,7 @@
     border-radius: 1.25rem;
     color: $white;
     padding: .5rem 1rem;
+    cursor:pointer;
 
     @include tablet {
       width: fit-content;

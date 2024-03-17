@@ -9,18 +9,22 @@
   background-color: $lightgray;
   width: 100%;
   padding-bottom: 4rem;
+
   @include tablet {
     padding-bottom: 2rem;
   }
+
   @include desktop {
     padding-bottom: 3rem;
   }
 
   text-align: center;
+
   &__rights {
     color: $slate;
     font-size: 11px;
     line-height: 16px;
+
     @include tablet {
       font-size: 12px;
       line-height: 18px;

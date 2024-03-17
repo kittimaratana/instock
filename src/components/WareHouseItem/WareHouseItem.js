@@ -15,7 +15,6 @@ function WareHouseItem({
   contactEmail,
   invokeDeleteModal
 }) {
-  //function WareHouseItem(city, address, contactName, contactPhone, contactEmail) {
   return (
     <div className="warehouse-item">
       <div className="warehouse-item--mobile">
@@ -24,7 +23,7 @@ function WareHouseItem({
             <div className="warehouse-item__sub-item">
               <h4 className="warehouse-item__label">WAREHOUSES</h4>
               <Link to={`/warehouse/${warehouseId}`} className="warehouse-item__value warehouse-item__value--align-text">
-                <AttributeLink attribute={warehouseName} device="mobile"/>
+                <AttributeLink attribute={warehouseName} device="mobile" />
               </Link>
             </div>
             <div className="warehouse-item__sub-item">
@@ -40,7 +39,6 @@ function WareHouseItem({
             <div className="warehouse-item__sub-item">
               <h4 className="warehouse-item__label">CONTACT INFORMATION</h4>
               <p className="warehouse-item__value">{contactPhone} </p>
-          
               <p className="warehouse-item__value">{contactEmail}</p>
             </div>
           </div>
@@ -52,7 +50,7 @@ function WareHouseItem({
       </div>
       <div className="warehouse-item--tablet">
         <Link to={`/warehouse/${warehouseId}`} className="warehouse-item__warehouse">
-          <AttributeLink attribute={warehouseName} device="tablet"/>
+          <AttributeLink attribute={warehouseName} device="tablet" />
         </Link>
         <p className="warehouse-item__address">{`${address}, ${city}, ${country}`}</p>
         <p className="warehouse-item__name">{contactName}</p>
@@ -61,7 +59,9 @@ function WareHouseItem({
         </p>
         <div className="warehouse-item__action">
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
-          <EditButton />
+          <Link to={`/warehouse/${warehouseId}/edit`}>
+            <EditButton />
+          </Link>
         </div>
       </div>
     </div>

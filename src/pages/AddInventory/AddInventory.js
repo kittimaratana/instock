@@ -4,7 +4,7 @@ import "./AddInventory.scss"
 export const AddInventory = () => {
   return (
     <div className="add-inventory__center-wrap">
-      <AddInventoryForm/>
+      <AddInventoryForm />
     </div>
   );
-  }
+}

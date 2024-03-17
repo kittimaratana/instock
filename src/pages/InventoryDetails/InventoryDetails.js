@@ -17,7 +17,6 @@ export const InventoryDetails = () => {
         const response = await axios.get(
           `${BASE_URL}/api/inventories/${inventoryId}`
         );
-        console.log(response.data);
         setInventoryInfo(response.data);
         setHasError(false);
       } catch {
@@ -30,7 +29,7 @@ export const InventoryDetails = () => {
   if (hasError) {
     return <p>Unable to access Inventory right now. Please try again later.</p>;
   }
-  
+
   return (
     <div className="inventoryDetails__center-wrap">
       <InventoryDetailsTable inventoryInfo={inventoryInfo} />

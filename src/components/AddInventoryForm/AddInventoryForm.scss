@@ -54,8 +54,6 @@
   }
 
   &__details-container {
-    // display: flex;
-    // flex-direction: column;
     border-bottom: 1px;
     width: 100%;
 
@@ -106,11 +104,23 @@
     @include tablet {
       margin-top: 0.7rem;
     }
+
+    @include desktop {
+      width: 7.625rem;
+    }
   }
 
   &__form-input {
     @include body-medium;
     @include form-field;
+
+    &--error{
+      border: 1px solid red;
+    }
+    &:focus{
+      border: 0.1rem solid $blue;
+    }
+        
 
     &--status {
       width: auto;
@@ -190,6 +200,7 @@
     @include button;
     @include body-medium;
     width: 48%;
+    cursor: pointer;
 
     @include tablet {
       width: 15%;

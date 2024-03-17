@@ -96,11 +96,23 @@
     @include tablet {
       margin-top: 0.7rem;
     }
+
+    @include desktop {
+      width: 7.625rem;
+    }
   }
 
   &__form-input {
     @include body-medium;
     @include form-field;
+
+    &--error {
+      border:1px solid red;
+    }
+    
+    &:focus{
+      border: 0.1rem solid $blue;
+    }
 
     &--status {
       width: auto;
@@ -178,6 +190,7 @@
   }
 
   &__edit-item {
+    cursor: pointer;
     @include button;
     @include body-medium;
     width: 48%;

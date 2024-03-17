@@ -20,21 +20,21 @@ export const WarehouseDetails = () => {
     fetchWarehouseData(warehouseId);
   }, [warehouseId]);
   const fetchWarehouseData = async (warehouseId) => {
-      try {
-        const getWarehouseByIdResponse = await axios.get(
-          `${BASE_URL}/api/warehouses/${warehouseId}`
-        );
-        const getInventoriesResponse = await axios.get(
-          `${BASE_URL}/api/warehouses/${warehouseId}/inventories`
-        );
-        setIsLoading(false);
-        setWarehouse({ ...getWarehouseByIdResponse.data });
-        setInventories([...getInventoriesResponse.data]);
-      } catch (error) {
-        setHasError(true);
-        setIsLoading(false);
-        console.error(error);
-      }
+    try {
+      const getWarehouseByIdResponse = await axios.get(
+        `${BASE_URL}/api/warehouses/${warehouseId}`
+      );
+      const getInventoriesResponse = await axios.get(
+        `${BASE_URL}/api/warehouses/${warehouseId}/inventories`
+      );
+      setIsLoading(false);
+      setWarehouse({ ...getWarehouseByIdResponse.data });
+      setInventories([...getInventoriesResponse.data]);
+    } catch (error) {
+      setHasError(true);
+      setIsLoading(false);
+      console.error(error);
+    }
   };
   const invokeDeleteModal = (id, name) => {
     setDeleteInventoryItem({ id: id, name: name });
@@ -109,11 +109,11 @@ export const WarehouseDetails = () => {
         </div>
       </section>
       <hr className="warehouse-details__divider2" />
-   
-      <InventoriesList 
-      inventories={inventories} 
-      withWarehouseName={false} 
-      invokeDeleteModal={invokeDeleteModal} />
+
+      <InventoriesList
+        inventories={inventories}
+        withWarehouseName={false}
+        invokeDeleteModal={invokeDeleteModal} />
       {deleteInventoryItem && (
         <DeleteModal
           header={`Delete ${deleteInventoryItem.name} inventory item?`}

@@ -6,7 +6,6 @@
 
 @mixin badge($color) {
   color: $color;
-
   &::after {
     border-radius: 20px;
     content: "";
@@ -19,23 +18,19 @@
     opacity: 7%;
   }
 }
-
 .status {
   @include body-small;
   font-weight: 600;
   white-space: nowrap;
   width: 6rem;
-  
   &__badge {
     display: inline-block;
     position: relative;
     padding: 0.25rem 0.5rem;
     text-transform: uppercase;
-
     &--in-stock {
       @include badge($green);
     }
-
     &--out-of-stock {
       @include badge($red);
     }

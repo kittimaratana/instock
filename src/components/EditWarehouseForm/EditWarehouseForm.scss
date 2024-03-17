@@ -24,16 +24,14 @@
   }
 
   &__header-name {
-    
+
     padding-left: 1rem;
     @include page-header;
     width: 100%;
-    
 
 
-    @include tablet {
-        // padding: 2rem;
-    }
+
+    @include tablet {}
   }
 
 
@@ -41,19 +39,17 @@
   &__details-container {
     border-bottom: 0.0625rem solid $lightgray;
     width: 100%;
-    
-    @include tablet{
+
+    @include tablet {
       display: flex;
       flex-wrap: nowrap;
       flex-direction: row;
       justify-content: center;
       padding-top: 1.5rem;
       padding-bottom: 1.5rem;
-      
+
     }
 
-
-    
   }
 
   &__divider {
@@ -69,25 +65,23 @@
     }
   }
 
-  
+
 
   &__details {
     padding: 1.5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
- 
+
     border-bottom: 1px solid;
     border-color: $cloud;
 
-    @include tablet{
+    @include tablet {
       width: 100%;
       padding: 0 2rem;
       border-bottom: none;
       border-left: 5px $red;
-    
     }
-
 
   }
 
@@ -97,32 +91,36 @@
 
     @include tablet {
       margin-top: 1.5rem;
+    }
   }
-}
 
 
   &__form-input {
 
     @include body-medium;
-   @include form-field;
+    @include form-field;
 
+    &--error {
+      border: 1px solid red;
+    }
 
-   
+    &:focus {
+      border: 0.1rem solid $blue;
+    }
 
     @include tablet {
       height: 2.375rem;
-      
+
+    }
   }
-}
 
   &__buttons-group {
     display: flex;
     flex-direction: row;
     padding: 2rem 2rem;
-    gap:1rem;
+    gap: 1rem;
     justify-content: space-around;
     background-color: $lightgray;
-    
 
     @include tablet {
       border-top: 1px solid $cloud;
@@ -131,22 +129,15 @@
 
   }
 
-  &__cancel-button{
+  &__cancel-button {
     @include button;
-
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // width: 50%;
-    // height: 2.25rem;
     color: $black;
     border: 1px solid $cloud;
     background-color: $white;
-    // border-radius: 20px;
-    // margin-left: 1rem;
-    // margin-right: 1rem;
-    
-    a { color: inherit; } 
+
+    a {
+      color: inherit;
+    }
 
     @include tablet {
       width: auto;
@@ -156,7 +147,8 @@
 
 
   }
-  &__cancel-button:hover{
+
+  &__cancel-button:hover {
     border-color: $blue;
   }
 
@@ -164,14 +156,6 @@
   &__add-button {
 
     @include button;
-    // width: 50%;
-    // color: white;
-    // border: none;
-    // background-color: $blue;
-    // border-radius: 20px;
-    // margin-left: 1rem;
-    // margin-right: 1rem;
-    
 
     @include tablet {
       width: auto;
@@ -181,9 +165,9 @@
 
   }
 
-  &__add-button:hover{
+  &__add-button:hover {
     background-color: $graphite;
-    cursor:pointer
+    cursor: pointer
   }
 
   &__success-message {

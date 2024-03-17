@@ -42,13 +42,12 @@
       margin-left: 5rem;
       margin-right: 3rem;
     }
-    // @include tablet {
-    //   margin-left: 7rem;
-    // }
+
     @include desktop {
       margin-left: 10rem;
     }
   }
+  
   &__header {
     display: flex;
     justify-content: space-between;

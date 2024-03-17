@@ -22,8 +22,8 @@
     }
     @include tablet {
         width: 39.188rem;
-        height: 262px;
-        margin: 195px auto 0 auto;
+        height: 16.375rem;
+        margin: 12.188rem auto 0 auto;
     }
   }
   &__content {
@@ -31,11 +31,11 @@
         padding: 0 2rem;
     }
     @include desktop {
-        padding: 0 48px;
+        padding: 0 3rem;
     }
   }
   &__header {
-    margin-top: 60px;
+    margin-top: 3.75rem;
     font-weight: 600;
     font-size: 1.75rem;
     line-height: 2.25rem;
@@ -46,27 +46,27 @@
   &__body {
     margin-top: 1rem;
     font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
+    font-size: 0.938rem;
+    line-height: 1.625rem;
   }
   &__buttons {
     display: flex;
     justify-content: center;
-    margin-top: 350px;
+    margin-top: 21.875rem;
     @include tablet {
         margin-top: 2rem;
         justify-content: end;
         padding: 0 2rem;
     }
     @include desktop {
-        padding: 0 48px;
+        padding: 0 3rem;
     }
   }
   &__close {
-    width: 162px;
+    width: 10.125rem;
     height: 2.25rem;
-    gap: 10px;
-    border-radius: 20px;
+    gap: 10.625rem;
+    border-radius: 1.25rem;
     border: 0.063rem solid rgba(189, 197, 213, 1);
     background-color: rgba(255, 255, 255, 1);
     cursor: pointer;
@@ -76,15 +76,15 @@
     }
     @include tablet {
         width: 70.063rem;
-        height: 38px;
+        height: 2.375rem;
     }
   }
   &__delete {
-    width: 162px;
+    width: 10.125rem;
     height: 2.25rem;
     margin-left: 1rem;
-    gap: 10px;
-    border-radius: 20px;
+    gap: 0.625rem;
+    border-radius: 1.25rem;
     border: 0;
     color: $white;
     background-color: rgba(201, 69, 21, 1);
@@ -94,7 +94,7 @@
     }
     @include tablet {
         width: 70.063rem;
-        height: 38px;
+        height: 2.375rem;
     }
   }
 }

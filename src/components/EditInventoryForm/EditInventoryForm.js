@@ -127,7 +127,7 @@ const EditInventoryForm = () => {
           navigate(`/inventory/${inventoryId}`);
         }, 3000);
       } catch (error) {
-        console.log(error); //modify error message -------------
+        console.error(error);
         setSubmitSuccess(false);
       }
     } else {
@@ -167,7 +167,7 @@ const EditInventoryForm = () => {
               Item Name
             </label>
             <input
-              className="edit-inventory__form-input"
+              className={itemName === "" ? "edit-inventory__form-input edit-inventory__form-input--error" : "edit-inventory__form-input"}
               placeholder={itemName}
               id="item-name"
               type="text"
@@ -181,7 +181,7 @@ const EditInventoryForm = () => {
               Description
             </label>
             <textarea
-              className="edit-inventory__form-input edit-inventory__form-input--description"
+              className={description === "" ? "edit-inventory__form-input edit-inventory__form-input--description edit-inventory__form-input--error" : "edit-inventory__form-input edit-inventory__form-input--description"}
               placeholder={description}
               id="description"
               type="text"
@@ -201,11 +201,11 @@ const EditInventoryForm = () => {
               value={category}
               onChange={handleChangeCategory}
             >
-              <option value={category}>{category}</option>
+              <option key={category} value={category}>{category}</option>
               {["Health", "Apparel", "Accessories", "Electronics", "Gear"]
                 .filter((filterCategory) => filterCategory !== category)
-                .map((filteredCategory) => {
-                  return <option>{filteredCategory}</option>;
+                .map((filteredCategory, index) => {
+                  return <option key={index}>{filteredCategory}</option>;
                 })}
             </select>
             {category === "" && <EmptyField />}
@@ -265,7 +265,7 @@ const EditInventoryForm = () => {
                     Quantity
                   </label>
                   <input
-                    className="edit-inventory__form-input"
+                    className={quantityErrorMessage ? 'edit-inventory__form-input edit-inventory__form-input--error' : 'edit-inventory__form-input'}
                     placeholder={quantity}
                     id="quantity"
                     type="text"
@@ -291,13 +291,13 @@ const EditInventoryForm = () => {
               value={warehouseName}
               onChange={handleChangeWarehouseName}
             >
-              <option>{warehouseName}</option>
+              <option key={warehouseName}>{warehouseName}</option>
               {warehouses
                 .filter(
                   (warehouse) => warehouse.warehouse_name !== warehouseName
                 )
-                .map((warehouse) => {
-                  return <option>{warehouse.warehouse_name}</option>;
+                .map((warehouse, index) => {
+                  return <option key={index}>{warehouse.warehouse_name}</option>;
                 })}
             </select>
             {warehouseName === "" && <EmptyField />}
