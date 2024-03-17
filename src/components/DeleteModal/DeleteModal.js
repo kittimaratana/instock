@@ -1,6 +1,7 @@
 import "./DeleteModal.scss";
 import closeIcon from "../../assets/images/close-24px.svg"
 
+//popup delete styling for warehouse and inventory
 function DeleteModal({ header, body, clickClose, clickDelete }) {
   return (
     <main className="delete-modal">

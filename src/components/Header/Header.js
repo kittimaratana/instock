@@ -3,19 +3,27 @@ import logo from "../../assets/images/InStock-Logo_1x.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { matchPath } from 'react-router'
 
+// Header for navigation
 function Header() {
+  // Getting the current path from location
   const { pathname } = useLocation();
   let activeClassName = "";
+
+  // Matching the current path with warehouse route
   const warehouseMatch = matchPath({
     path: "/warehouse/:warehouseId",
     exact: true,
     strict: false,
   }, pathname);
+
+  // Matching the current path with index route
   const indexMatch = matchPath({
     path: "/",
     exact: true,
     strict: false,
   }, pathname);
+
+  // Setting active class name if the current path matches warehouse or index route
   if (warehouseMatch || indexMatch) {
     activeClassName = "active";
   }

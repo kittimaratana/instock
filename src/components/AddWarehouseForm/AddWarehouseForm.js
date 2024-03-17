@@ -1,14 +1,13 @@
 import "./AddWarehouseForm.scss";
 import { BASE_URL } from "../../utils/constant-variables";
 import EmptyField from "../EmptyField/EmptyField";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
-import { WarehouseDetails } from "../../pages/WarehouseDetails/WarehouseDetails";
+
 
 const CreateNewWarehouse = () => {
+    //defining all useStates for forms and validation
     const [warehouse_name, setWarehouse_name] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -23,11 +22,12 @@ const CreateNewWarehouse = () => {
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const navigate = useNavigate();
 
-
+    //submit handler to add new warehouse to server
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmit(true);
         const formattedPhone = formatPhoneNumber(contact_phone);
+        //validation check for all required field
         if (
             !warehouse_name ||
             !address ||
@@ -56,7 +56,7 @@ const CreateNewWarehouse = () => {
         };
 
         setIsPending(true);
-
+        //POST new warehouse to server
         try {
             const response = await fetch(`${BASE_URL}/api/warehouses`, {
                 method: "POST",
@@ -80,12 +80,11 @@ const CreateNewWarehouse = () => {
             setSubmitSuccess(false);
         }
     };
-
+    //validate for proper email and phone format
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
-
     const validatePhone = (phone) => {
         const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/;
         return phoneRegex.test(phone);
@@ -109,7 +108,7 @@ const CreateNewWarehouse = () => {
 
         phoneErrorMessage = <EmptyField message="Please provide valid number" />;
     }
-
+    // HTML elements for the 
     return (
         <section className="add-warehouse">
             <section className="add-warehouse__header">
@@ -153,7 +152,7 @@ const CreateNewWarehouse = () => {
                             className={city === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
                             placeholder="City"
                             type="text"
-                            id='warehouse-sity'
+                            id='warehouse-city'
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />

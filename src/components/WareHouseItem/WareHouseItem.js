@@ -15,6 +15,8 @@ function WareHouseItem({
   contactEmail,
   invokeDeleteModal
 }) {
+
+  //display warehouse item, includes links and deletion/deits buttons
   return (
     <div className="warehouse-item">
       <div className="warehouse-item--mobile">

@@ -4,6 +4,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_colors" as *;
 
+//one container of warehouse item styling to ensure it is responsive to different devices
 .warehouse-item {
   width: 100%;
   &--mobile {

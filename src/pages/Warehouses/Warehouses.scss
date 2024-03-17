@@ -4,6 +4,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_colors" as *;
 
+//keeps warehouse component within 1280px
 .warehouse__center-wrap {
     display: flex;
     background-color: $white;
@@ -13,14 +14,11 @@
     position: relative;
     bottom: 4rem;
     margin: 0 auto;
-
-
     @include tablet {
       justify-content: space-between;
       top: -6.25rem;
       margin-bottom: -3rem;
     }
-
     @include desktop {
       margin: 0 auto;
       max-width: 63.5rem;

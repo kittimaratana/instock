@@ -8,6 +8,7 @@ import axios from "axios";
 import ArrowBack from "../ArrowBack/ArrowBack";
 
 const AddInventoryForm = () => {
+  //declare states for obtaining inventory item form fields and form validations
   const navigate = useNavigate();
   const [warehouses, setWarehouses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ const AddInventoryForm = () => {
   const [quantity, setQuantity] = useState("1");
   const [isTypeOfQuantityInt, setIsTypeOfQuantityInt] = useState(true);
 
+  //gets list of warehouses to display to users to prevent users from selecting warehouse not available
   useEffect(() => {
     const fetchWarehouse = async () => {
       try {
@@ -38,6 +40,7 @@ const AddInventoryForm = () => {
     fetchWarehouse();
   }, []);
 
+  //if fetching warehouse has not updated yet return progress or error statements
   if (hasError) {
     return (
       <p>Unable to access warehouses right now. Please try again later.</p>
@@ -52,6 +55,7 @@ const AddInventoryForm = () => {
     return <p>No warehouses available</p>;
   }
 
+  //set the inventory fields once users enter the information
   const handleChangeWarehouseName = (e) => setWarehouseName(e.target.value);
   const handleChangeItemName = (e) => setItemName(e.target.value);
   const handleChangeDescription = (e) => setDescription(e.target.value);
@@ -64,10 +68,12 @@ const AddInventoryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //error fields will begin populating once user has submitted first time
     setHasSubmit(true);
 
     let fieldError = false;
 
+    //checks to see if inventory fields are empty or does not meet conditions
     if (warehouseName === "") {
       fieldError = true;
     }
@@ -90,6 +96,9 @@ const AddInventoryForm = () => {
       }
     }
 
+    //call server once there are no issues with input
+    //as there can be multiple warehouse name associated to each ids, to prevent issues the first id is chosen
+    //warehouse name was chosen to match edit inventory mockup
     if (fieldError === false) {
       const warehouseSelected = warehouses.find((warehouse) => warehouse.warehouse_name === warehouseName);
 
@@ -116,6 +125,7 @@ const AddInventoryForm = () => {
     }
   };
 
+  //checks if quantity satisfies condition
   let quantityErrorMessage = null;
   if (quantity === "" || !isTypeOfQuantityInt) {
     quantityErrorMessage = <EmptyField message="Please insert valid number" />;
@@ -127,6 +137,7 @@ const AddInventoryForm = () => {
     );
   }
 
+  //inventory form html 
   return (
     <section className="add-inventory">
       <section className="add-inventory__header">

@@ -19,6 +19,7 @@ export const WarehouseDetails = () => {
   useEffect(() => {
     fetchWarehouseData(warehouseId);
   }, [warehouseId]);
+  // Fetching data for warehouse and inventory
   const fetchWarehouseData = async (warehouseId) => {
     try {
       const getWarehouseByIdResponse = await axios.get(
@@ -36,9 +37,11 @@ export const WarehouseDetails = () => {
       console.error(error);
     }
   };
+  // Setting required parameters for delete inventory item
   const invokeDeleteModal = (id, name) => {
     setDeleteInventoryItem({ id: id, name: name });
   };
+  // Deleting selected invenroty item from the warehouse list and reload the page
   const deleteSelectedInventoryItem = async () => {
     try {
       await axios.delete(`${BASE_URL}/api/inventories/${deleteInventoryItem.id}`);
@@ -49,7 +52,7 @@ export const WarehouseDetails = () => {
       console.error(error);
     }
   };
-
+  
   if (hasError) {
     return (
       <p>Unable to access warehouses right now. Please try again later.</p>

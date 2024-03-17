@@ -1,6 +1,7 @@
 import ErrorIcon from "../../assets/images/error-24px.svg";
 import "./EmptyField.scss";
 
+//if field is empty or contains error message, they are provided with icon and error message
 function EmptyField({ message = "This field is required" }) {
   return (
     <div className="empty-field">

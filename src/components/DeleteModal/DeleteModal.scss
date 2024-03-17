@@ -1,6 +1,7 @@
 @use "../../styles/partials/_colors" as *;
 @use "../../styles/partials/mixins" as *;
 
+//styling for deleting warehouse/inventory
 .delete-modal {
   position: fixed;
   z-index: 1;

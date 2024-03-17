@@ -1,6 +1,7 @@
 import "./Warehouses.scss";
 import WarehouseTable from "../../components/WarehouseTable/WarehouseTable";
-// Main page 
+
+// main page 
 export const Warehouses = () => {
   return (
     <div className="warehouse__center-wrap">

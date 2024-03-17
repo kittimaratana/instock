@@ -27,7 +27,6 @@
   }
 
   &__header-name {
-
     padding-left: 1rem;
     @include page-header;
     width: 100%;
@@ -47,6 +46,7 @@
     }
   }
 
+  // code for the divider between 2 form section
   &__divider {
     width: 100%;
     border: 0.0625rem solid $lightgray;
@@ -79,6 +79,7 @@
   &__form-label {
     margin-top: 1rem;
     @include labels-links-button;
+
     @include tablet {
       margin-top: 1.5rem;
     }
@@ -87,20 +88,24 @@
   &__form-input {
     @include body-medium;
     @include form-field;
+
     @include tablet {
       height: 2.375rem;
     }
 
-    &--error{
+    //border style for error state
+    &--error {
       border: 0.063rem solid red;
     }
-    &:focus{
+
+    //style for active input field
+    &:focus {
       border: 0.1rem solid $blue;
     }
   }
 
+  //button group at the bottom of the main body
   &__buttons-group {
-  
     display: flex;
     flex-direction: row;
     padding: 1rem 1.5rem;
@@ -108,6 +113,7 @@
     justify-content: space-around;
     background-color: $lightgray;
 
+    //when on tablet, set justify-content to flex-end 
     @include tablet {
       border-top: 0.063rem solid $cloud;
       justify-content: flex-end;
@@ -115,16 +121,18 @@
 
   }
 
+  // cancel button styling
   &__cancel-button {
     @include button;
     color: $black;
     border: 0.063rem solid $cloud;
     background-color: $white;
- 
+
     a {
       color: inherit;
     }
 
+    //add 1rem padding on both sides of the text for table and desktop 
     @include tablet {
       width: auto;
       padding-left: 1rem;
@@ -132,14 +140,17 @@
     }
   }
 
+  //hover state for cancel button
   &__cancel-button:hover {
     border-color: $blue;
     color: $blue;
   }
 
-
+  //add button styling
   &__add-button {
     @include button;
+
+    //add 1rem padding on both sides of the text for table and desktop 
     @include tablet {
       width: auto;
       padding-left: 1rem;

@@ -3,7 +3,7 @@
 @use "../../styles/partials/_breakpoints" as *;
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_colors" as *;
-
+// Stles for the inventory edit table
 .edit-inventory__center-wrap {
   display: flex;
   background-color: $white;

@@ -5,6 +5,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_colors" as *;
 
+//button styling for search and add header
 .search_and_add_button_header {
   display: flex;
   flex-wrap: wrap;

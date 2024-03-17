@@ -5,6 +5,7 @@
 @use "../../styles/partials/_variables" as *;
 @use "../../styles/partials/_components" as *;
 
+//add inventory styling
 .add-inventory {
   width: 100%;
 
@@ -15,6 +16,7 @@
   &__header {
     width: 100%;
   }
+
   &__header-container {
     width: 100%;
     padding: 2rem 1rem 1rem 1.5rem;
@@ -26,9 +28,11 @@
 
     &-arrow {
       padding-top: 0.3rem;
+
       @include tablet {
         padding-top: 0;
       }
+
       @include desktop {
         padding-top: 0.6rem;
       }
@@ -40,6 +44,7 @@
     @include page-header;
   }
 
+  //divider location is different between mobile and tablet
   &__divider {
     width: 100%;
     border: 0.0625rem solid $cloud;
@@ -53,6 +58,7 @@
     }
   }
 
+  //container where form is location
   &__details-container {
     border-bottom: 0.063rem;
     width: 100%;
@@ -84,6 +90,7 @@
     }
   }
 
+  //form label
   &__form-label {
     margin-top: 1rem;
     @include labels-links-button;
@@ -110,17 +117,18 @@
     }
   }
 
+  //form input with different styling based on state like error
   &__form-input {
     @include body-medium;
     @include form-field;
 
-    &--error{
+    &--error {
       border: 0.063rem solid red;
     }
-    &:focus{
+
+    &:focus {
       border: 0.1rem solid $blue;
     }
-        
 
     &--status {
       width: auto;
@@ -137,8 +145,7 @@
       appearance: none;
       padding-top: 0.4rem;
       margin-bottom: 0;
-      background: transparent
-        url("../../assets/images/arrow_drop_down-24px.svg") no-repeat right;
+      background: transparent url("../../assets/images/arrow_drop_down-24px.svg") no-repeat right;
       background-position-x: calc(100% - 0.625rem);
     }
   }
@@ -159,13 +166,14 @@
     color: $slate;
   }
 
+  //container that contains action and cancel item buttons
   &__action-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem 1.5rem;
     background-color: $lightgray;
-  
+
     @include tablet {
       justify-content: flex-end;
       gap: 1rem;
@@ -187,6 +195,7 @@
     @include desktop {
       width: 8%;
     }
+
     &:hover {
       border-color: $blue;
       color: $blue;
@@ -212,6 +221,7 @@
     }
   }
 
+  //if users post successfully, styling
   &__success-message {
     @include body-medium;
     width: 100%;
