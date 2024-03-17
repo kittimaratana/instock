@@ -116,11 +116,11 @@
   &__sub-item {
     width: 100%;
     padding-bottom: $mobile-padding;
-    // display: flex;
-    align-items: center;
 
     @include tablet {
+      display: flex;
       padding-bottom: 0;
+      align-items: center;
     }
 
     &-label {

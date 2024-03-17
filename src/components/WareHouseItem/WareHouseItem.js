@@ -47,7 +47,7 @@ function WareHouseItem({
         </div>
         <div className="warehouse-item__wrap-section3">
           <DeleteButton invokeDeleteModal={invokeDeleteModal} />
-          <Link  to={`/warehouse/${warehouseId}`}>
+          <Link  to={`/warehouse/${warehouseId}/edit`}>
           <EditButton />
           </Link>
         </div>
