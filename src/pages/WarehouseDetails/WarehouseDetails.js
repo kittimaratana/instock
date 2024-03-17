@@ -1,6 +1,6 @@
 import "./WarehouseDetails.scss";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import CircleEdit from "../../components/CircleEditButton/CircleEditButton";
@@ -69,12 +69,15 @@ export const WarehouseDetails = () => {
             {warehouse.warehouse_name}
           </div>
         </div>
-        <div className="warehouse-details__header-edit">
+        
+        <Link to={`/warehouse/${warehouseId}/edit`}  className="warehouse-details__header-edit">
           <CircleEdit />
-        </div>
-        <div className="warehouse-details__header-edit-tablet">
+        </Link>
+
+        <Link to={`/warehouse/${warehouseId}/edit`}  className="warehouse-details__header-edit-tablet">
           <CircleEdit />
-        </div>
+        </Link>
+
       </section>
       <hr className="warehouse-details__divider1" />
       <section className="warehouse-details__container">

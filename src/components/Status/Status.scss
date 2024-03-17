@@ -7,7 +7,7 @@
 @mixin badge($color) {
   color: $color;
   &::after {
-    border-radius: 20px;
+    border-radius: 1.25rem;
     content: "";
     background-color: $color;
     position: absolute;

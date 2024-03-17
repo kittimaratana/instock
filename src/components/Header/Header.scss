@@ -6,12 +6,12 @@
 .header {
   background-color: $graphite;
   height: 12.5rem;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.813rem;
+  line-height: 1.25rem;
 
   @include tablet {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
   }
 
   &__center-wrapper {
@@ -103,13 +103,13 @@
     &:hover {
       text-decoration: underline;
       background-color: $black;
-      border-radius: 50px;
+      border-radius: 3.125rem;
     }
   }
 
   .active {
     background-color: $black;
-    border-radius: 50px;
+    border-radius: 3.125rem;
 
     .header__nav-link {
       color: $white;

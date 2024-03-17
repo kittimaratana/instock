@@ -46,7 +46,7 @@
   }
 
   &__details-container {
-    border-bottom: 1px;
+    border-bottom: 0.0625rem;
     width: 100%;
 
     @include tablet {
@@ -59,7 +59,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px;
+    border-bottom: 0.0625rem;
     padding: 1.5rem;
 
     @include tablet {
@@ -107,7 +107,7 @@
     @include form-field;
 
     &--error {
-      border:1px solid red;
+      border:0.0625rem solid red;
     }
     
     &:focus{
