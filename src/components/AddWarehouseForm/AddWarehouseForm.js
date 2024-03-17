@@ -1,0 +1,255 @@
+import "./AddWarehouseForm.scss";
+import { BASE_URL } from "../../utils/constant-variables";
+import EmptyField from "../EmptyField/EmptyField";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ArrowBack from "../ArrowBack/ArrowBack";
+
+
+const CreateNewWarehouse = () => {
+    //defining all useStates for forms and validation
+    const [warehouse_name, setWarehouse_name] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [contact_name, setContact_name] = useState('');
+    const [contact_position, setContact_position] = useState('');
+    const [contact_phone, setContact_phone] = useState('');
+    const [contact_email, setContact_email] = useState('');
+
+    const [hasSubmit, setHasSubmit] = useState(false);
+    const [isPending, setIsPending] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const navigate = useNavigate();
+
+    //submit handler to add new warehouse to server
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmit(true);
+        const formattedPhone = formatPhoneNumber(contact_phone);
+        //validation check for all required field
+        if (
+            !warehouse_name ||
+            !address ||
+            !city ||
+            !country ||
+            !contact_name ||
+            !contact_position ||
+            !contact_phone ||
+            !validatePhone(formattedPhone) ||
+            !contact_email ||
+            !validateEmail(contact_email)
+        ) {
+            console.error('Please fill out all fields and provide a valid email address and phone number.');
+            return;
+        }
+
+        const newWarehouse = {
+            warehouse_name,
+            address,
+            city,
+            country,
+            contact_name,
+            contact_position,
+            contact_phone: formattedPhone,
+            contact_email
+        };
+
+        setIsPending(true);
+        //POST new warehouse to server
+        try {
+            const response = await fetch(`${BASE_URL}/api/warehouses`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newWarehouse)
+            }).then(setIsPending(false),
+            );
+
+            if (response.ok) {
+                setSubmitSuccess(true);
+                setTimeout(() => {
+                    navigate("/");
+                }, 3000)
+
+            } else {
+                console.error('Failed to add warehouse:', response.statusText);
+                setSubmitSuccess(false)
+            }
+        } catch (error) {
+            console.error('Error adding warehouse:', error);
+            setSubmitSuccess(false);
+        }
+    };
+    //validate for proper email and phone format
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+    const validatePhone = (phone) => {
+        const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/;
+        return phoneRegex.test(phone);
+    };
+
+    // Function to format phone number to +1 (xxx) xxx-xxxx
+    const formatPhoneNumber = (phone) => {
+        // Remove any non-numeric characters
+        const numbers = phone.replace(/\D/g, '');
+
+        // Add country code and format
+        let formattedNumber = '+1 (' + numbers.substring(0, 3) + ') ' + numbers.substring(3, 6) + '-' + numbers.substring(6, 10);
+
+        return formattedNumber;
+    };
+
+    let phoneErrorMessage = null;
+
+    const phoneRegex = /^\+\d{1,2}\s\(\d{3}\)\s\d{3}-\d{4}$/
+    if (contact_phone === "" || !phoneRegex.test(formatPhoneNumber(contact_phone))) {
+
+        phoneErrorMessage = <EmptyField message="Please provide valid number" />;
+    }
+    // HTML elements for the 
+    return (
+        <section className="add-warehouse">
+            <section className="add-warehouse__header">
+                <ArrowBack />
+                <h1 className="add-warehouse__header-name">Add New Warehouse</h1>
+            </section>
+
+            <hr className="warehouse__divider" />
+
+            <form onSubmit={handleSubmit}>
+
+                <div className="add-warehouse__details-container">
+                    <div className="add-warehouse__details">
+                        <h2>Warehouse Details</h2>
+                        <label htmlFor='warehouse-name' className="add-warehouse__form-label">Warehouse Name:<br /></label>
+                        <input
+                            className={warehouse_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Warehouse Name"
+                            type="text"
+                            id="warehouse-name"
+                            value={warehouse_name}
+                            onChange={(e) => setWarehouse_name(e.target.value)}
+                        />
+                        {warehouse_name === "" && hasSubmit && <EmptyField />}
+
+
+                        <label htmlFor='warehouse-address' className="add-warehouse__form-label">Address:  </label>
+                        <input
+                            className={address === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Street address"
+                            type="text"
+                            id="warehouse-address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                        {address === "" && hasSubmit && <EmptyField />}
+
+
+                        <label htmlFor='warehouse-city' className="add-warehouse__form-label">City:</label>
+                        <input
+                            className={city === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="City"
+                            type="text"
+                            id='warehouse-city'
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                        {city === "" && hasSubmit && <EmptyField />}
+
+
+                        <label htmlFor='warehouse-country' className="add-warehouse__form-label">Country: </label>
+                        <input
+                            className={country === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Country"
+                            type="text"
+                            id="warehouse-country"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                        {country === "" && hasSubmit && <EmptyField />}
+
+                    </div>
+
+                    <hr className="add-warehouse__divider add-warehouse__divider--between-components" />
+
+                    <div className="add-warehouse__details">
+
+                        <h2>Contact Details</h2>
+                        <label htmlFor="contact-name" className="add-warehouse__form-label" >Contact Name: </label>
+                        <input
+                            className={contact_name === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Contact Name"
+                            type="text"
+                            id="contact-name"
+                            value={contact_name}
+                            onChange={(e) => setContact_name(e.target.value)}
+                        />
+                        {contact_name === "" && hasSubmit && <EmptyField />}
+
+
+                        <label htmlFor="contact-position" className="add-warehouse__form-label">Contact Position: </label>
+                        <input
+                            className={contact_position === "" && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Contact Position"
+                            type="text"
+                            id="contact-position"
+                            value={contact_position}
+                            onChange={(e) => setContact_position(e.target.value)}
+                        />
+                        {contact_position === "" && hasSubmit && <EmptyField />}
+
+
+                        <label htmlFor="contact-phone" className="add-warehouse__form-label">Phone Number:</label>
+                        <input
+                            className={phoneErrorMessage && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Phone Number"
+                            type="text"
+                            id="contact-phone"
+                            value={contact_phone}
+                            onChange={(e) => setContact_phone(e.target.value)}
+                        />
+                        {hasSubmit && phoneErrorMessage}
+
+
+
+                        <label htmlFor="contact-email" className="add-warehouse__form-label">Email:</label>
+                        <input
+                            className={!validateEmail(contact_email) && hasSubmit ? 'add-warehouse__form-input add-warehouse__form-input--error' : 'add-warehouse__form-input'}
+                            placeholder="Email"
+                            type="text"
+                            id="contact-email"
+                            value={contact_email}
+                            onChange={(e) => setContact_email(e.target.value)}
+                        />
+                        {!validateEmail(contact_email) && hasSubmit && <EmptyField />}
+
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div className="add-warehouse__buttons-group">
+                    <div className="add-warehouse__cancel-button">
+                        <a href="/"> Cancel </a>
+                    </div>
+
+                    {!isPending && <button className="add-warehouse__add-button">+ Add Warehouse</button>}
+                </div>
+                {submitSuccess && (
+                    <div className="add-warehouse__success-message">Successfully added new warehouse. Redirecting you to the main page...</div>
+                )}
+
+
+
+            </form>
+        </section>
+    );
+
+}
+
+export default CreateNewWarehouse;

@@ -1,0 +1,27 @@
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_breakpoints" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_colors" as *;
+// Styles for the inventory page, responsive
+.inventoryDetails__center-wrap {
+  display: flex;
+  background-color: $white;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(19, 24, 44, 0.1);
+  width: 90%;
+  position: relative;
+  bottom: 4rem;
+  margin: 0 auto;
+
+  @include tablet {
+    justify-content: space-between;
+    top: -6.25rem;
+    margin-bottom: 30rem;
+  }
+
+  @include desktop {
+    margin: 0 auto;
+    max-width: 63.5rem;
+  }
+}

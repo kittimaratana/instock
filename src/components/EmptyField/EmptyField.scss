@@ -1,0 +1,21 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/colors";
+@import "../../styles/partials/typography-mixins";
+
+//styling if users enters incorrect input and error message is shown
+.empty-field {
+  @include body-small;
+  display: flex;
+  align-items: center;
+  padding-top: 0.3rem;
+
+  &__icon {
+    width: 1rem;
+  }
+
+  &__text {
+    color: $red;
+  }
+}

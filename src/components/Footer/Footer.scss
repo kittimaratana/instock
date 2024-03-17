@@ -1,0 +1,29 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/colors";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: $lightgray;
+  width: 100%;
+  padding-bottom: 2.5rem;
+
+  @include desktop {
+    padding-bottom: 3rem;
+  }
+
+  text-align: center;
+
+  &__rights {
+    color: $slate;
+    font-size: 0.688rem;
+    line-height: 1rem;
+
+    @include tablet {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+  }
+}

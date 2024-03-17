@@ -1,0 +1,130 @@
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_colors" as *;
+
+//one container of warehouse item styling to ensure it is responsive to different devices
+.warehouse-item {
+  width: 100%;
+  &--mobile {
+    padding: $mobile-padding;
+    @include tablet {
+      display: none;
+    }
+  }
+  &--tablet {
+    display: none;
+    @include tablet {
+      display: flex;
+      padding: 1rem 2rem;
+      @include body-medium;
+      align-items: center;
+      gap: 1rem;
+    }
+    @include desktop {
+      padding: 1rem 3rem;
+    }
+  }
+  &__wrap-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__wrap-section1 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 45%;
+    margin-right: 1rem;
+  }
+  &__wrap-section2 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 45%;
+  }
+  &__wrap-section3 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+ &__edit-button{
+  padding-top: 0.35rem;
+ }
+  
+  &__icon-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__sub-item {
+    width: 100%;
+    padding-bottom: $mobile-padding;
+  }
+  &__label {
+    @include table-header;
+    color: $slate;
+  }
+  &__value {
+    @include body-medium;
+    position: relative;
+
+    &--align-text {
+      display: flex;
+      text-align: center;
+      color: $blue;
+      font-weight: 600;
+    }
+  }
+  &__divider {
+    width: 110%;
+  }
+  &__warehouse {
+    width: 22%;
+    display: flex;
+    align-items: center;
+    color: $blue;
+    @include labels-links-button;
+  }
+  &__address {
+    width: 20%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 29%;
+    }
+  }
+  &__name {
+    width: 18%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 18%;
+    }
+  }
+  &__information {
+    width: 29.5%;
+    display: flex;
+    align-items: center;
+
+    @include desktop {
+      width: 24%;
+    }
+  }
+  &__action {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    @include tablet {
+      justify-content: space-between;
+    }
+    @include desktop {
+      width: 7%;
+      justify-content: space-between;
+    }
+  }
+}

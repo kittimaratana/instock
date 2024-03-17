@@ -1,0 +1,10 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
+//dimensions for attribute link icon
+.attribute-link__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }

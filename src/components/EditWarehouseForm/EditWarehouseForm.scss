@@ -1,0 +1,190 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/components" as *;
+
+.edit-warehouse {
+  width: 100%;
+
+  @include tablet {
+    // padding: $tablet-padding;
+    flex-direction: row;
+  }
+
+  &__header {
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  &__header-name {
+
+    padding-left: 1rem;
+    @include page-header;
+    width: 100%;
+
+
+
+    @include tablet {}
+  }
+
+
+
+  &__details-container {
+    border-bottom: 0.0625rem solid $lightgray;
+    width: 100%;
+
+    @include tablet {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+
+    }
+
+  }
+
+  &__divider {
+    width: 100%;
+    border: 0.0625rem solid $lightgray;
+
+    &--between-components {
+      @include tablet {
+        width: 0%;
+        border: none;
+        border-right: 0.0625rem solid $cloud;
+      }
+    }
+  }
+
+
+
+  &__details {
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    border-bottom: 0.0625rem solid;
+    border-color: $cloud;
+
+    @include tablet {
+      width: 100%;
+      padding: 0 2rem;
+      border-bottom: none;
+
+    }
+
+  }
+
+  &__form-label {
+    margin-top: 1rem;
+    @include labels-links-button;
+
+    @include tablet {
+      margin-top: 1.5rem;
+    }
+  }
+
+
+  &__form-input {
+
+    @include body-medium;
+    @include form-field;
+
+    //border style for error state  
+    &--error {
+      border: 0.0625rem solid red;
+    }
+
+    //style for active input field
+    &:focus {
+      border: 0.1rem solid $blue;
+    }
+
+    @include tablet {
+      height: 2.375rem;
+
+    }
+  }
+
+  //button group at the bottom of the main body
+  &__buttons-group {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    justify-content: space-around;
+    background-color: $lightgray;
+
+    //when on tablet, set justify-content to flex-end 
+    @include tablet {
+      border-top: 0.0625rem solid $cloud;
+      justify-content: flex-end;
+    }
+
+  }
+
+  // cancel button styling
+  &__cancel-button {
+    @include button;
+    color: $black;
+    border: 0.0625rem solid $cloud;
+    background-color: $white;
+
+    a {
+      color: inherit;
+    }
+
+    //add 1rem padding on both sides of the text for table and desktop 
+    @include tablet {
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+
+  }
+
+  //hover state for cancel button
+  &__cancel-button:hover {
+    border-color: $blue;
+    color: $blue;
+  }
+
+  //add button styling
+  &__add-button {
+
+    @include button;
+
+    //add 1rem padding on both sides of the text for table and desktop 
+    @include tablet {
+      width: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+  }
+
+  &__add-button:hover {
+    background-color: $graphite;
+    cursor: pointer
+  }
+
+  &__success-message {
+    @include body-medium;
+    width: 100%;
+    padding: 1rem;
+    background-color: $lightgray;
+  }
+
+
+}
