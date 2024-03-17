@@ -118,10 +118,11 @@ function WarehouseTable() {
       })}
       {deleteItem && (
         <DeleteModal
-          name={deleteItem.name}
+          header={`Delete ${deleteItem.name} warehouse?`}
+          body={`Please confirm that you’d like to delete the ${deleteItem.name} from the list of warehouses. You won’t be able to undo this action.`}
           clickClose={() => setDeleteItem(null)}
           clickDelete={deleteSelectedItem}
-        ></DeleteModal>
+        />
       )}
     </section>
   );
